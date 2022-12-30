@@ -1,4 +1,4 @@
-# full lesson from programiz.com
+# full lesson from Francis Royce
 
 # day one assigning values to variables
 
