@@ -5,34 +5,34 @@
 site_name = 'programiz.com'
 print(site_name)
 
-site_name ='apple.com'
+site_name = 'apple.com'
 print(site_name)
 
-#assigning multiple values to multiple vareiables
-a, b, c, =5,3.2, 'hello'
+# assigning multiple values to multiple variables
+a, b, c, = 5, 3.2, 'hello'
 print(a)
 print(b)
 print(c)
 
-#same value to multiple variable
+# same value to multiple variable
 
 a = b = 'francis Royce'
 print(a)
 print(b)
 
-#case sensitivity
+# case sensitivity
 num = 6
 Num = 44
 print(num)
 print(Num)
 
-#python constants/creating constant
+# python constants/creating constant
 
-#special literals
+# special literals
 value = None
 print(value)
 
-#4 litetral collections:
+# 4 literal collections:
 # 1- list Literal
 fruits = ['apple', 'mango', 'orange']
 print(fruits)
@@ -49,16 +49,16 @@ print(alphabets)
 vowels = {'a', 'e', 'i', 'o', 'u'}
 print(vowels)
 
-Day 2
-python data types
+# Day 2
+# python data types
 
 # numerical data type
 num1 = 1
-print(num1, 'is of type', type(num1)) #interger
+print(num1, 'is of type', type(num1))   # integer
 num2 = 2.1
-print(num2, 'is of type', type(num2)) #float
+print(num2, 'is of type', type(num2))   # float
 num3 = 1 + 2j
-print(num3, 'is of type', type(num3)) #complex
+print(num3, 'is of type', type(num3))   # complex
 
 # list data type []
 languages = ['swift', 'java', 'python']
@@ -66,7 +66,7 @@ print(languages)
 
 # access list items
 languages = ['swift', 'java', 'python']
-#indexing (postive and negative indexing)
+# indexing (positive and negative indexing)
 print(languages[0])
 print(languages[1])
 print(languages[2])
@@ -101,7 +101,7 @@ print('list2:', even_numbers)
 prime_numbers.extend(even_numbers)
 print('list after extent', prime_numbers)
 
-#change list items
+# change list items
 '''python lists ara mutable: meaning lists are changeable'''
 languages = ['swift', 'java', 'python']
 languages[2] = "C++"
@@ -121,7 +121,7 @@ languages = ['swift', 'java', 'python']
 languages.remove('java')
 print(languages)
 
-#clear()
+# clear()
 languages = ['swift', 'java', 'python']
 languages.clear()
 print('list after clear:', languages)
@@ -131,7 +131,7 @@ languages = ['swift', 'java', 'python']
 del languages[:]
 print('languages:', languages)
 
-# copying a list: it returns a new list and doesnt modify the original list
+# copying a list: it returns a new list and doesn't modify the original list
 my_list = ['cat', 0, 6, 7]
 new_list = my_list.copy()
 print('copied list', new_list)
@@ -154,5 +154,3 @@ new_list = my_list
 new_list[1] = 'dog'
 print('Old list', my_list)
 print('New list', new_list)
-
-
