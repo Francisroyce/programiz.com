@@ -52,7 +52,7 @@ print(vowels)
 # Day 2
 # python data types
 
-# numerical data type
+# 1- numerical data type
 num1 = 1
 print(num1, 'is of type', type(num1))   # integer
 num2 = 2.1
@@ -60,11 +60,13 @@ print(num2, 'is of type', type(num2))   # float
 num3 = 1 + 2j
 print(num3, 'is of type', type(num3))   # complex
 
-# list data type []
+# 2-list data type []
 languages = ['swift', 'java', 'python']
 print(languages)
 
-# access list items
+# python list methods
+
+# 1- access list items (indexing)
 languages = ['swift', 'java', 'python']
 # indexing (positive and negative indexing)
 print(languages[0])
@@ -116,7 +118,7 @@ languages = ['swift', 'java', 'python']
 del languages[0:2]
 print(languages)
 
-# using (remove) to delete a list items
+# 3- using (remove) to delete a list items
 languages = ['swift', 'java', 'python']
 languages.remove('java')
 print(languages)
@@ -126,17 +128,17 @@ languages = ['swift', 'java', 'python']
 languages.clear()
 print('list after clear:', languages)
 
-# del can be used also to empty the list
+# 4- del can be used also to empty the list
 languages = ['swift', 'java', 'python']
 del languages[:]
 print('languages:', languages)
 
-# copying a list: it returns a new list and doesn't modify the original list
+# 5-copying a list: it returns a new list and doesn't modify the original list
 my_list = ['cat', 0, 6, 7]
 new_list = my_list.copy()
 print('copied list', new_list)
 
-# list copying using operator (=)
+# 5-list copying using operator (=)
 old_list = ['cat', 0, 6, 7]
 new_list = old_list
 print('New list:', new_list)
@@ -151,6 +153,103 @@ print('New list', new_list)
 
 my_list = ['cat', 0, 6, 7]
 new_list = my_list
-new_list[1] = 'dog'
 print('Old list', my_list)
+new_list[1] = 'dog'
 print('New list', new_list)
+
+# Day 3 continuation
+# Deep copy and Shallow copy
+# copying using operator (=)
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 'a']]
+new_list = old_list
+new_list[1][0] = 9
+print('old list:', old_list)
+print('ID of old list', id(old_list))
+
+print('new list:', new_list)
+print('ID of old list', id(new_list))
+# both variable share the same ID
+
+# Shallow and Deep copy
+'''here, original value unchanged and only modify the new values or vise versa'''
+# here, to make it work we use 'copy module'
+
+# Shallow Copy
+'''it creates a new object which stores the reference of the original elements'''
+
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 9]]
+new_list = copy.copy(old_list)
+print('old list:', old_list)
+print('new list:', new_list)
+
+'''to confirm that 'new list' is different from 'old list', we try to add new nested object'''
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 9]]
+new_list = copy.copy(old_list)
+old_list.append([3, 3, 3])
+print('old list:', old_list)
+print('new list:', new_list)
+
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 9]]
+new_list = copy.copy(old_list)
+old_list.append([3, 3, 3])
+new_list.append([4, 4, 4])
+print('old list:', old_list)
+print('new list:', new_list)
+# note, when you change any nested object in the 'old list, it will appear in the new liest
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 55]] # changed 9 to 55, it will affect both
+new_list = copy.copy(old_list)
+old_list.append([7, 7, 7])
+print('old list:', old_list)
+print('new list:', new_list)
+
+# using indexing for shallow copy
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 55]]
+new_list = copy.copy(old_list)
+old_list[1][1] = 'AA'
+print('old list:', old_list)
+print('new list:', new_list)
+
+# Deep copy
+"""it creates a new object and recursively adds the copies of nested objects present in the original"""
+# (deepcopy())
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 55]]
+new_list = copy.deepcopy(old_list)
+print('old list:', old_list)
+print('new list:', new_list)
+"""if you make changes in the old list, it will affect the new list"""
+import copy
+old_list = [[1, 2, 3,], [4, 5, 6], [7, 8, 55]]
+new_list = copy.deepcopy(old_list)
+old_list[1][0] = 'Royce'
+print('old list:', old_list)
+print('new list:', new_list)
+
+# 6-Python list count (count())
+"""it returns the number of times the specified elements appears in the list"""
+numbers = [2, 3, 5, 2, 11, 2, 7, 3]
+count = numbers.count(2)
+new_list = numbers
+new_count = new_list.count(3)
+print('count of 2:', count)
+print('count of 3:', new_count)
+
+# syntax of List Count() = list.count(elements)
+vowels = ['a', 'e', 'i', 'o', 'i', 'u']
+vowel_count = vowels.count('i')
+print('count of i is :', vowel_count)
+vowel_count = vowels.count('p')
+print('the count of p:', vowel_count)
+
+# Count Tuple and list Elements inside list
+random = ['a', ('a', 'b'), ('a', 'b'), [3, 4, 5,]]
+count = random.count(('a', 'b'))
+print("the count of ('a', 'b') is:", count)
+count =random.count([3, 4, 5,])
+print("the count of [3, 4, 5,] is :", count)
+
