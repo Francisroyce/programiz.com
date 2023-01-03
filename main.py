@@ -250,6 +250,120 @@ print('the count of p:', vowel_count)
 random = ['a', ('a', 'b'), ('a', 'b'), [3, 4, 5,]]
 count = random.count(('a', 'b'))
 print("the count of ('a', 'b') is:", count)
-count =random.count([3, 4, 5,])
+count = random.count([3, 4, 5,])
 print("the count of [3, 4, 5,] is :", count)
+
+# Day 4
+# python list insert()
+
+vowels = ['a', 'e', 'i', 'u']
+vowels.insert(3, 'o')
+print('list:', vowels)
+
+prime_numbers = [2, 3, 5, 7]
+prime_numbers.insert(4, 11)
+print('list:', prime_numbers)
+
+Mixed_list = [{1, 3}, {2, 5} ]
+Mixed_list.insert(2, (3, 4))
+print('List:', Mixed_list)   #or
+
+Mixed_list = [{1, 3}, {2, 5} ]
+number_tuple = (6, 8)
+Mixed_list.insert(2, number_tuple)
+print('updated list:', Mixed_list)
+
+# python list pop()
+"""it removes the items at the given index from the list and returns the removed items"""
+prime_numbers = [2, 3, 5, 7]
+removed_element = prime_numbers.pop(2)
+print('removed Element:', removed_element)
+print('updated list:', prime_numbers)
+
+prime_numbers = [2, 3, 5, 7]
+prime_numbers.pop(2)
+print('updated list:', prime_numbers)  # only the updated list
+
+
+languages = ['python', 'java', 'c++', 'french', 'c']
+return_value = languages.pop(3)
+print('return val:', return_value)
+print('updated list:', languages)
+
+# without an index
+languages = ['python', 'java', 'c++', 'french', 'c']
+return_value = languages.pop()
+print('return val:', return_value)
+print('updated list:', languages)   #or
+
+languages = ['python', 'java', 'c++', 'french', 'c']
+print('when index is not passed:')
+print('return value:', languages.pop())
+print('updated list:', languages)
+
+# with negative index
+print('\nwhen -1 is passed:')
+print('return value', languages.pop(-1))
+print('updated list:', languages)
+
+print('\nwhen -3 is passed:')
+print('return values:', languages.pop(-3))
+print('updated list:', languages)
+
+# python list reverse
+"""it reverses the elements of the list: reverse()"""
+prime_numbers = [2, 3, 5, 7]
+prime_numbers.reverse()
+print('reversed list:', prime_numbers)
+
+languages = ['python', 'java', 'c++', 'french', 'c']
+print('\noriginal list:', languages)
+languages.reverse()
+print('reversed list:', languages)
+
+# reverse a list using slicing operator
+languages = ['python', 'java', 'c++', 'french', 'c']
+print('\noriginal list:', languages)
+reversed_list = languages[::-1]
+languages.reverse()
+print('updated list:', reversed_list)
+
+languages = ['python', 'java', 'c++', 'french', 'c']
+reversed_list = languages
+print('\noriginal list:', reversed_list)
+reversed_list.reverse()
+print('reversed list::', reversed_list)
+
+# Accessing elements in reversed order
+languages = ['python', 'java', 'c++', 'french', 'c']
+for o in reversed(languages):
+    print(o)
+
+# python list sort()
+"""sorts the items of the a list in ascending or descending order"""
+prime_numbers = [2, 3, 5, 7]
+prime_numbers.sort()
+print(prime_numbers)
+
+languages = ['python', 'java', 'c++', 'french', 'c']
+languages.sort()
+print('\nsorted list:', languages)
+
+# descending order
+prime_numbers = [2, 3, 5, 7]
+prime_numbers.sort(reverse=True)
+print('sorted list (in descending order):', prime_numbers)
+
+# descending
+prime_numbers = [2, 3, 5, 7]
+prime_numbers.sort(reverse=False)
+print('sorted list (in descending order):', prime_numbers)
+
+# sort with custom function using key
+
+
+
+
+
+
 
