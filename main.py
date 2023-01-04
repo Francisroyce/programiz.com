@@ -359,11 +359,107 @@ prime_numbers = [2, 3, 5, 7]
 prime_numbers.sort(reverse=False)
 print('sorted list (in descending order):', prime_numbers)
 
+  # Day 5
 # sort with custom function using key
+# take seconds element for sort
+def takeSeconds(elem):
+    return elem[1]
+random = [(2, 2), (3, 4), (4, 1), (1, 3)]
+random.sort(key=takeSeconds)
+print('sorted list:', random)
+
+# sorting using custom key
+employees = [
+    {'Name': 'Francis Royce', 'age': 28, 'salary': 1000},
+    {'Name': 'Bethel', 'age': 30, 'salary': 500},
+    {'Name': 'Marvelous', 'age': 18, 'salary': 90},
+    {'Name': 'Blessing', 'age': 40, 'salary': 20},
+]
+# custom functions to get employee info
+def get_name(employee):
+    return employee.get('Name')
+
+def get_age(employee):
+    return employee.get('age')
+
+def get_salary(employee):
+    return employee.get('salary')
+
+# sort by name (ascending order)
+employees.sort(key=get_name)
+print(employees, end='\n\n')
+
+# age (ascending order)
+employees.sort(key=get_age)
+print(employees, end='\n\n')
+
+# salary (descending order)
+employees.sort(key=get_salary, reverse=True)
+print(employees, end='\n\n')
+
+# lambda
+"""it is a good practice to use lambda function when the function can be summarised in one line"""
+employees = [
+    {'Name': 'Francis Royce', 'age': 28, 'salary': 1000},
+    {'Name': 'Bethel', 'age': 30, 'salary': 500},
+    {'Name': 'Marvelous', 'age': 18, 'salary': 90},
+    {'Name': 'Blessing', 'age': 40, 'salary': 20},
+]
+# sort by name (ascending order)
+employees.sort(key= lambda x: x.get('Name'))
+print(employees, end='\n\n')
+
+# age (ascending order)
+employees.sort(key= lambda x: x.get('age'))
+print(employees, end='\n\n')
+
+# salary (descending order)
+employees.sort(key=lambda x: x.get('salary'), reverse=True)
+print(employees, end='\n\n')
 
 
+# sorting using multiple keys
+"""nested list of stuents info in a science class unn
+list elements: (student's name, marks out of 100, age.)"""
+participant_list = [
+    ('Francis', 50, 40),
+    ('Royce', 75, 18),
+    ('Ifeanyi', 90, 22),
+    ('Okoronkwo', 45, 12)
+]
+def sorter(item):
+    # highest mark first, least error = most marks
+    error = 100 - item[1]
+    age = item[2]
+    return (error, age)
+sorted_list = sorted(participant_list, key=sorter)
+print(sorted_list)
 
+"""since the sorting logic function is small and fits in one line, 'lambda' function
+is used instead inside 'key' rather than passing a separate function
+"""
+articipant_list = [
+    ('Francis', 50, 40),
+    ('Royce', 75, 18),
+    ('Ifeanyi', 90, 22),
+    ('Okoronkwo', 45, 12)
+]
+sorted_list = sorted(participant_list, key=lambda item: (100 - item[1], item[2]))
+print(sorted_list)
 
+# python list (index())
+animal = ('cat', 'dog', 'rabit', 'horse')
+index = animal.index('rabit')
+print(index)
+# index = animal.index('flies')
+# print('the index of flies', index) #valueError cos flies is not in the tuple
 
+# 'b' after 3rd index is searched
+alphabets = ['a', 'b', 'c', 'd', 'b', 'c', 'a']
+index = alphabets.index('a')
+print('the index of a:',index)
 
+index = alphabets.index('b', 3)
+print('the index of b:', index)
 
+# next continue number data type
