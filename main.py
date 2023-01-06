@@ -1,6 +1,6 @@
 # full lesson from Francis Royce1
 
-# day one assigning values to variables
+# day1 assigning values to variables
 
 site_name = 'programiz.com'
 print(site_name)
@@ -59,7 +59,61 @@ num2 = 2.1
 print(num2, 'is of type', type(num2))   # float
 num3 = 1 + 2j
 print(num3, 'is of type', type(num3))   # complex
+# number system: Binary- 0b, Octal- 0o, hexadecimal- 0x
+print(0b1101011)
+print(0o15)
+print(0x123)
+print(0xFB + 0b10)
+# type conversion - the process of converting one type of number into another
+print(1 + 2.0) #    operators convert integers to float implicitly (automatically)
+# explicit conversion
+num1 = int(2.3)
+print(num1)
 
+num2 = int(-2.9)
+print(num2)
+
+num3 = float(3)
+print(num3)
+
+num4 = complex('3+6j')
+print(num4)
+
+# random module (import random module)
+import random
+print(random.randrange(10, 20))
+
+list = ['a', 'b', 'c', 'd', 'e']
+print(random.choice(list))
+print(list)
+random.shuffle(list)
+print(list)
+print(random.random())
+
+import random
+random.seed(2)
+print(random.random())
+print(random.random())
+print(random.random())
+
+import random
+a = 1
+b = 3
+print(random.uniform(a, b))
+# look up for more random functions
+# mathematics (math module): carries different mathematical functions
+import math
+print(math.pi)
+print(math.gcd(2))
+print(math.cos(math.pi))
+print(math.exp(10))
+print(math.log10(1000))
+print(math.sinh(1))
+print(math.factorial(6))
+print(math.sqrt(4))
+sq = math.sqrt(4)
+b = int(sq)
+print(b)
 # 2-list data type []
 languages = ['swift', 'java', 'python']
 print(languages)
@@ -462,4 +516,166 @@ print('the index of a:',index)
 index = alphabets.index('b', 3)
 print('the index of b:', index)
 
-# next continue number data type
+# Day 6
+#  python tuple data type(())
+"""tuple is an ordered sequence of items same as a list.
+the only difference is that tuples are immutable. tuples can not be modified once created ()"""
+product = ('Royce', 'Francis', 60)
+print(product[0])
+print(product[1])
+
+# different types of tuples
+my_tuple = ()
+print(my_tuple)
+# integers
+my_tuple = (1, 2, 3, 4)
+print(my_tuple)
+# mixed
+my_tuple = (1, 'hello', 3.4)
+print(my_tuple)
+# nested tuple
+my_tuple = ('mouse', [8, 4, 6], (1, 2, 3))
+print(my_tuple)
+# creating tuples without parenthesis
+my_tuple = 1, 2, 3
+print(my_tuple)
+my_tuple = 1, 'hello', 3.2
+print(my_tuple)
+# python tuple with one element
+var1 = ('hello')  # string
+print(var1)
+var2 = ('hello',) # tuple
+print(var2)
+
+var1 = ('hello')
+print(type(var1))
+var2 = ('hello',)
+print(type(var2))
+var1 = 'hello'
+print(type(var1))
+var2 = 'hello',
+print(type(var2))
+
+# accessing tuple elements
+# indexing
+
+letters = ('a', 'b', 'c', 'd', 'e', 'f')
+print(letters[1])
+print(letters[0])
+print(letters[-3])
+print(letters[-5])
+
+# slicing
+print(letters[1:4])
+print(letters[:-4])
+print(letters[4:])
+print(letters[:])
+
+# tuple methods
+"""methods that add items or remove items are not available with tuple cos it is immutable
+only two methods are available:"""
+letters = ('a', 'a', 'c', 'a', 'b', 'c', 'd', 'e', 'f')
+# 1 (count)
+print(letters.count('a'))
+print(letters.count('b'))
+print(letters.count('c'))
+# 2 iterating through a tuple
+letters = ('a', 'a', 'c', 'a', 'b', 'c', 'd', 'e', 'f')
+for letters in  letters:
+    print(letters)
+letters = ('a', 'a', 'c', 'a', 'b', 'c', 'd', 'e', 'f')
+for letter in letters:
+    print(letters)
+
+# checking if item exist
+letters = ('a', 'a', 'c', 'a', 'b', 'c', 'd', 'e', 'f')
+print('a' in letters)
+print('f' in letters)
+print('z' in letters)
+
+# Day 7
+# python string data type
+name = 'francis royce'
+print(name)
+# double quote
+string1 = "python language"
+print(string1)
+# indexing strings
+name = 'francis royce'
+print(name[1])
+print(name[-4])
+# slicing strings
+name = 'francis royce'
+print(name[1:4])
+# strings are immutable
+name = 'francis'
+print(name)
+name =' royce'
+print(name)
+# python multiline strings: we use triple quotes
+message = """Never gonna give up.
+Never gonna let you down."""
+print(message)
+
+# python string operations
+# 1- compare two strings
+str1 = 'hello, world!'
+str2 = 'i love python'
+str3 = 'i love python'
+print(str1 == str2)
+print(str2 == str3)
+# joining two or  more strings
+name = 'Francis,'
+surname = 'Royce'
+result = name + surname
+print(result)
+# iterating through a python string
+name = 'Francis Royce'
+for name in name:
+    print(name)
+# python string length (len)
+name = 'royce'
+print(len(name))
+name = 'Francis Royce'
+name = len(name)
+print(name)
+# string membership
+print('a' in 'royce')
+print('o' in 'royce')
+
+# upper case (upper())
+name = 'francis royce'
+print(name.upper())
+# upper() return Value
+string = 'this should be uppercase!'
+print(string.upper())
+str = 'th!s sh0uld b3 uPPercas3'
+print(str.upper())
+
+# how uppercase is used in a program
+str1 = 'python is awesome'
+str2 = 'PYTHON IS AWESOME'
+if str1.upper() == str2.upper():
+    print('the strings are the same')
+else:
+    print('the strings are not the same')
+# lowercase
+str2 = 'PYTHON IS AWESOME'
+print(str2.lower())
+
+# swapcase
+str2 = 'PYTHON IS AWESOME'
+print(str2.swapcase())
+
+str2 = 'PYTHON IS AWESOME'
+print(str2.swapcase())
+print(str2.swapcase().swapcase())
+print(str2.swapcase().swapcase() == str2)
+
+# python string partitions (partition())
+str = 'python is fun'
+print(str.partition('is'))
+print(str.partition('not'))  #  'not' is not found
+
+str = "python is fun, isn't it"
+print(str.partition('is'))
