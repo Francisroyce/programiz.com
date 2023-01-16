@@ -846,3 +846,189 @@ print('The number is: {:d}'.format(123))
 print('the float number is:{:f}'.format(190.0))
 # octal, binary, and hexadecimal format
 print('bin: {0:b}, oct: {0:o}, hex:{0:x}'.format(12))
+
+# number formatting with padding for int and floating
+# integer numbers with minimum width
+print('{:5d}'.format(12))
+
+# width doesn't work for numbers longer than padding
+print('{:2d}'.format(1234))
+
+# padding for float numbers
+print('{:8.3f}'.format(12.2346))
+
+# integer numbers with minimum width filled with zeros
+print('{:05d}'.format(12))
+
+# padding for float numbers filled with zeros
+print('{:08.3f}'.format(12.2346))
+
+# number formatting for signed numbers
+# show the + sign
+print('{:+f} {:+f}'.format(12.23, -12.23))
+
+# show the -sign only
+print('{:-f} {:-f}'.format(12.23, -12.23))
+
+# show space for + sign
+print('{: f} {: f}'.format(12.23, -12.23))
+
+# number formatting with alignment
+
+# number formatting with left, right and center alignment
+print('{:>5d}'.format(12)) # right
+print('{:^10.3f}'.format(12.1234)) # center
+print('{:<05d}'.format(12)) # left
+print('{:=8.3f}'.format(-12.2346))
+
+# string formatting with for format()
+# string formatting with padding and alignment
+# string padding with left alignment
+print('{:5}'.format('cat'))
+
+# with right alignment
+print('{:>5}'.format('cat'))
+
+# center alignment
+print('{:^5}'.format('cat'))
+
+# padding with center alignment and '*' padding character
+print('{:*^5}'.format('cat'*6))
+
+print('{:*^5}'.format('cat'))
+
+# Truncating strings with format()
+# truncating to 3 letters
+print('{:.3}'.format('caterpillar'))
+
+# truncating to 3 letters and padding
+print('{:5.3}'.format('caterpillar'))
+
+# truncating to 3 letters and padding and center alignment
+print('{:^5.3}'.format('caterpillar'))
+
+# formatting class members using format()
+# define person class
+class person:
+    age = 28
+    name = 'Francis Royce'
+# format age
+print("{p.name}'s age is: {p.age}".format(p =person))
+
+# formatting dictionary members using format()
+# define person dictionary
+person ={'age': 28, 'name': 'Francis Royce'}
+print("{p[name]}'s age is: {p[age]}".format(p = person))
+
+# easier way to format dictionaries using str.format(**mapping)
+person ={'age': 28, 'name': 'Francis Royce'}
+print("{name}'s age is: {age}".format(**person))
+# day 10
+# continuation
+# dynamic formatting using format()
+string = '{:{fill}{align}{width}}'
+print(string.format('cat', fill='*', align='^', width=5))   # passing format codes as arguments
+
+# dynamic float format templates
+num = '{:{align}{width}.{precision}f}'
+print(num.format(12.236, align='<', width=8, precision=2))  # passing format codes as arguments
+
+# extra formatting options with format()
+"""format() also supports type-specific formatting options like datetime's and complex number"""
+# type-specific formatting with format() and overriding__format__() method
+import datetime
+date = datetime.datetime.now()
+print("it's now: {:%y/%m/%d, Time: %H:%M:%S}".format(date))
+
+# complex number formatting
+complexNumber = 1 + 2j
+print("Real part: {0.real} and Imaginary part: {0.imag}".format(complexNumber))
+
+# custom__format()__ method
+class person:
+    def __format__(self, format):
+        if(format == 'age'):
+            return '23'
+        return 'None'
+print("Adam's age is: {:age}".format(person()))
+
+# __str()__ and __repr__ shorthand !r and !s using format()
+print('Quotes: {0!r}, without Quotes: {0!s}'.format('cat'))
+
+class person:
+    def __str__(self):
+        return 'STR'
+    def __repr__(self):
+        return 'REPR'
+print('repr: {p!r}, str: {p!s}'.format(p=person()))
+
+class person:
+    def __str__(self):
+        return 'STR'
+    def __repr__(self):
+        return 'REPR'
+print('repr: {p!r}, str: {p!s}'.format(p=person))    # without () in person
+
+# python string capitalize()
+"""converts first character of a string to an uppercase"""
+sentence = 'i love PYTHON'
+cap = sentence.capitalize()
+print(cap)
+# syntax: string.capitalize()
+
+sentence = 'python is Awesome'
+cap = sentence.capitalize()
+print(cap)
+print('python is awesome'.capitalize())
+
+# python string center()
+# center() syntax
+"""it returns a new centered string after padding it with the specified character"""
+sentence = 'python is awesome'
+new_string = sentence.center(24, "'")
+print(new_string)
+
+sentence = 'python is awesome'
+new_string = sentence.center(24, '*')
+print(new_string)
+
+sentence = 'python is awesome'
+new_string = sentence.center(20, '$')
+print(new_string)
+
+# center() with dafault argument
+sentence = 'python is awesome'
+new_string = sentence.center(24)
+print('center string:', new_string)
+
+print('python is awesome'.center(24, '*'))
+
+# python string casefold()
+"""converts all characters of the string into lowercase letters and returns a new string"""
+text = 'pYtHon'
+lower_cased = text.casefold()
+print(lower_cased)
+text = 'PYTHON IS FUN'
+lower_cased = text.casefold()
+print(lower_cased)
+# casefold() as am agreesive lower() method
+"""casfold() converts more characters into lower case than lower()"""
+
+# python string count()
+"""returns the number of occurrences of a substring in the given string"""
+message = 'python is a popular programming language'
+print('number of p', message.count('p'))
+
+# count the number of occurrences of a given substring
+string = "python is awesome, isn't it?"
+substring = 'is'
+count = string.count(substring)
+print('the count is:', count)
+
+# count number of occurrences of a given substring using start and end
+string = "python is awesome, isn't it?"
+substring = 'i'
+count = string.count(substring, 8, 25)
+print('the count is :', count)
+
+# next python string endswith()
