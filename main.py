@@ -1031,4 +1031,60 @@ substring = 'i'
 count = string.count(substring, 8, 25)
 print('the count is :', count)
 
-# next python string endswith()
+string = 'python', 'royce', 'royce', 'francis'
+print('string count is:', string.count('royce'))
+
+# python string endswith()
+"""it returns True if a string ends with the specified suffix. if not, it returns False"""
+# endswitch() without start and end parameter
+message = 'python is fun.'
+end = message.endswith('is fun')
+print(end)
+
+message = 'python is fun.'
+end = message.endswith('is fun.')
+print(end)
+
+message = 'python is fun.'
+print(message.endswith('is fun'))
+
+# endswitch() with start and end parameter
+text = 'python programming is easy to learn.'
+result = text.endswith('learn.', 7)  #  7 start parameter
+print(result)
+
+text = 'python programming is easy to learn.'
+result = text.endswith('is', 7, 26)  #  7 start and end 26 parameter
+print(result)
+result = text.endswith('easy', 7, 26)
+print(result)
+# passing Tuple to endswitch()
+text = 'programming is easy'
+result = text.endswith(('programming', 'python'))
+print(result)
+
+result = text.endswith(('python', 'easy', 'java'))
+print(result)
+result = text.endswith(('is', 'an'), 0, 14)
+print(result)
+
+# read up on startswitch()
+"""it returns True if a string starts with the specified prefix(string).
+if not, it returns false"""
+
+#  Python string expandtabs()
+"""it returns copy of string with all tab character '\t' replaced with white space
+characters until the next multiple of tabsize parameter."""
+# expandtabs() with no argument
+str = 'xyz\t12345\tabc'
+result = str.expandtabs() # default size is 8
+print(result)
+
+# expandtabs() with different character
+str = 'xyz\t12345\tabc'
+print('original string:', str)
+print('tabsize 2:', str.expandtabs(2))
+print('tabsize 3:', str.expandtabs(3))
+print('tabsize 4:', str.expandtabs(4))
+print('tabsize 5:', str.expandtabs(5))
+print('tabsize 6:', str.expandtabs(6))
