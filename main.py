@@ -1302,3 +1302,161 @@ else:
 # python string join()
 """returns a string by joining all the elements of iterable(list, string, tuple),
 separated by the given separator"""
+text = 'python', 'is', 'a', 'fun', 'programming'
+print(' '.join(text))
+# list
+numlist = ['1', '2', '3', '4', '5']
+seperator = ', '
+print(seperator.join(numlist))
+# tuple
+numtuple = ('1', '2', '3', '4', '5')
+print(seperator.join(numtuple))
+
+
+# two elements
+s1 = 'abc'
+s2 = 'def'
+print('s1. join(s2):', s1.join(s2))
+
+s1 = 'abc'
+s2 = 'def'
+s = s1.join(s2)
+print('s1. join(s2):',s)
+print('s1. join(s2):', s2.join(s1))
+# sets
+text = {'3','1', '4'}
+s = ', '
+print(s.join(text))
+
+text = {'python', 'java', 'ruby'}
+s = '->->'
+print(s.join(text))
+"""a set is an unordered collection of items, so you may get different output (random)"""
+
+# dictionary
+text = {'mat': 1, 'that': 2}
+s = '->'
+print(s.join(text))
+
+# python string ljust()
+"""returns a left-justified string of a given minimum"""
+# left justify string of minimum width
+str = 'cat'
+width = 5
+print(str.ljust(width))
+
+# left justify string and fill the remaining spaces
+str = 'cat'
+width = 5
+fillchar = '*'
+print(str.ljust(width, fillchar))
+
+str = 'cat'
+width = 3
+fillchar = '*'
+print(str.ljust(width, fillchar))
+
+# python string rjust()
+str = 'cat'
+width = 5
+fillchar = '*'
+print(str.rjust(width, fillchar))
+
+str = 'cat'
+width = 5
+print(str.rjust(width))
+
+# python string lstrip()
+"""returns a copy of the string with leading characters removed (based on the string argument)"""
+str = '     this is good'
+print('original string:', str)
+print('whitespace removed:', str.lstrip())
+
+print(str.lstrip('sti'))
+print(str.lstrip('s ti'))
+
+website = 'https://www.francisroyce.com/'
+print(website.lstrip())
+
+website = 'https://www.francisroyce.com/'
+print(website.lstrip('https://'))
+
+# python rstrip()
+str = '     this is good'
+print('original string:', str)
+print('whitespace removed:', str.rstrip())
+print(str.rstrip('sti'))
+print(str.rstrip('s ti'))
+
+website = 'https://www.francisroyce.com/'
+print(website.rstrip())
+
+website = 'https://www.francisroyce.com/'
+print(website.rstrip('com/'))
+
+title = 'python programming'
+result = title.rstrip()
+print(result)
+
+# python strip()
+"""returns a copy of the string by removing both the leading and the trailing characters
+(based on the string argument passed)"""
+message = '     learn python'
+print('nessage:', message.strip())
+
+string = '     xoxo love xoxo   '
+print(string)
+print(string.strip())
+print(string.strip('  xoe'))
+print(string.strip('stx'))
+string = 'android is awesome'
+print(string.strip('an'))
+
+# python string split()
+"""splits a string at the specified separator and returns a list of substrings"""
+cars = 'BMW- Tesla-Range Rover'
+print(cars.split('-'))
+
+text = 'love thy neighbor'
+print(text.split())
+grocery = 'milk, chicken, bread'
+print(grocery)
+print(grocery.split())
+print(grocery.split(',  '))
+print(grocery.split(':'))
+# use of maxsplit(): specifies the maximum number of splits to be performed on string
+grocery = 'milk, chicken, bread, butter'
+print(grocery.split(',  ', 2))
+print(grocery.split(',  ', 1))
+
+# python string rsplit()
+"""splits strings from the right"""
+text = 'love thy neighbor'
+print(text.rsplit())
+
+grocery = 'milk, chicken, bread, butter'
+print(grocery.rsplit(', '))
+print(grocery.split(':'))
+
+# with maxsplit
+print(grocery.rsplit(', ', 2))
+print(grocery.rsplit(', ', 1))
+print(grocery.rsplit(', ', 5))
+print(grocery.rsplit(', ', 0))
+
+# python string splitlines()
+# splits the string at line breaks and returns a list
+# \n is a line boundary
+sentence = 'i\nlove\nphython\nprogramming'
+print(sentence.splitlines())
+
+grocery = 'milk\nchicken\nbread\rbutter'
+print(grocery.splitlines())
+
+# splitlines() with multi-line string
+grocery = ''' milk
+chicken
+breaed
+butter'''
+print('original string:', grocery)
+print(grocery.splitlines())
