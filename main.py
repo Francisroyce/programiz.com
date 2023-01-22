@@ -1460,3 +1460,66 @@ breaed
 butter'''
 print('original string:', grocery)
 print(grocery.splitlines())
+
+# passing boolean value in splitline
+grocery = 'milk\nchiken\nbrfead\nbutter'
+print(grocery)
+print(grocery.splitlines(True))
+print(grocery.splitlines(False))
+
+# passing number in splitlines()
+print(grocery.splitlines(0))
+print(grocery.splitlines(5))
+
+# python string zrfill()
+"""returns copy of the string with '0' characters padded to left"""
+text = 'python is fun'
+print(text.zfill(15))
+print(text.zfill(20))
+print(text.zfill(10))
+
+# how zfill() works with sign prefix
+num ='-230'
+print(num)
+print(num.zfill(8))
+text = '--random+text'
+print(text.zfill(20))
+
+# python string format_map()
+"""similar to str.format(*mapping) except that str.format creates a new dictionary
+whereas str.format_map doesn't"""
+point = {'x': 4, 'y': -5}
+print('{x} {y}'.format(**point))
+point = {'x': 4, 'y': -5}
+print('{x} {y}'.format_map(point))
+point = {'x': 4, 'y': -5, 'z': 0}
+print('{x} {y} {z}'.format_map(point))
+
+# how to format_map works with dic subclass
+class coordinate(dict):
+    def __missing__(self, key):
+        return key
+print('({x}, {y})'.format_map(coordinate(x='6')))
+print('({x}, {y})'.format_map(coordinate(y='9')))
+print('({x}, {y})'.format_map(coordinate(x='6', y='0')))
+# # python set Data type
+"""set is an unordered collections of unique items.defined by value separated by
+commas inside braces{}"""
+student_id = {112, 114, 116, 118, 119}
+print(student_id)
+print(type(student_id))
+
+empty_set = {}
+print(empty_set)
+print(type(empty_set))
+
+# duplicate items in a set
+numbers = {1, 0, 3, 4, 4, 7, 1, 1}
+print(numbers)  # no duplicate items
+
+# add items to a set in python
+numbers = {21, 22, 23, 24}
+print('initial set:', numbers)
+numbers.add(34)
+print(numbers)
+print('update set:', numbers.add(34))
