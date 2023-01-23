@@ -1523,3 +1523,182 @@ print('initial set:', numbers)
 numbers.add(34)
 print(numbers)
 print('update set:', numbers.add(34))
+
+# update python set
+companies = {'lacoste', 'francis royce'}
+tech_companies = ['apple', 'google', 'apple']
+companies.update(tech_companies)
+print(companies)
+
+# remove element from a set, we use 'discard()'
+languages = {'swift', 'java', 'python'}
+print('initial set:', languages)
+removedValue = languages.discard('java')
+print('set after removed():', languages)
+
+# iterate over a set in python
+fruits = {'apple', 'peach', 'mango'}
+for fruit in fruits:
+    print(fruit)
+
+fruits = {'apple', 'peach', 'mango'}
+for fruit in fruits:
+    print(fruits)
+
+# find number of set elements: len()
+even_numbers = {2, 4, 6, 8}
+print('set:', even_numbers)
+print('total element:', len(even_numbers))
+
+# python set operations
+"""provides different buit-in methods to perform mathematical set operations"""
+# union of two sets: we use (|) or union()
+A = {1, 3, 5}
+B = {0, 2, 4}
+print('union using |:', A | B)
+print('union using union():', A.union(B))
+
+# set intersection
+# we use & operator or intersection()
+A = {1, 3, 5}
+B = {0, 2, 4}
+print(A & B)
+print(A.intersection(B))
+
+A = {1, 3, 5}
+B = {1, 2, 3}
+print(A & B)
+print(A.intersection(B))
+
+# difference between two sets
+# we use (-) operator or difference()
+A = {1, 3, 5}
+B = {0, 2, 4}
+print(A - B)
+print(A.difference(B))
+
+A = {2, 3, 5}
+B = {1, 2, 6}
+print(A - B)
+print(A.difference(B))
+
+# set symmetric difference
+# we use (^) operator or the symmetric_difference()
+A = {2, 3, 5}
+B = {1, 2, 6}
+print(A^B)
+print(A.symmetric_difference(B))
+
+# check if two sets are equal: ==
+A = {2, 3, 5}
+B = {1, 2, 6}
+print(A==B)
+
+if A==B:
+    print('set A and B are equal.')
+else:
+    print('Set A and B are not Equal.')
+
+# python set remove()
+languages = {'swift', 'java', 'python'}
+languages.remove('java')
+print(languages)
+
+# deleting element that doesn't exist
+languages = {'swift', 'java', 'python'}
+# languages.remove('fish')
+# print(languages)  KeyError (fish)
+
+languages = {'swift', 'java', 'python'}
+languages.discard('fish')
+print(languages)
+"""discard() removes the specified elements from the set. if trhe element doesn't exist,
+ the set remains unchanged unlike Remove() that will return Error"""
+
+# python set Copy()
+numbers = {1, 2, 3, 4}
+new_numbers = numbers.copy()
+print(new_numbers)
+
+# copy using == operator
+name = {'francis', "royce", 'okoronkwo', 'ifeanyi'}
+new_name = name
+print(new_name)
+
+# add items to the set after copy()
+numbers = {1, 2, 3, 4}
+new_numbers = numbers.copy()
+new_numbers.add(5)
+print(new_numbers)
+
+numbers = {1, 2, 3, 4}
+new_numbers == numbers
+new_numbers.add(5)
+print(new_numbers)
+
+# python set clear()
+"""removes all items from the set"""
+prime = {2, 3, 5, 7}
+prime.clear()
+print(prime)
+
+# python set difference_update()
+"""computes the difference between two sets(A-B) and updates set A with the resulting set."""
+A = {1, 3, 5, 7, 9}
+B = {2, 3, 5, 7, 11}
+print(A.difference_update(B))
+
+A = {1, 3, 5, 7, 9}
+B = {2, 3, 5, 7, 11}
+A.difference_update(B)
+print(A)
+
+# python set intersection_update()
+A = {1, 3, 5, 7, 9}
+B = {2, 3, 5, 7, 11}
+A.intersection_update(B)
+print(A)
+
+A = {1, 3, 5, 7}
+B = {2, 3, 5, 7, 11}
+C = {4, 5, 6, 9, 10}
+A.intersection_update(B, C)
+print(A)
+print(B)
+print(C)
+
+# python set isdisjoint()
+A = {1, 3, 5, 7, }
+B = {4, 5, 6}
+A.isdisjoint(B)
+print(A)
+print(A.isdisjoint(B))
+
+# python disjoint()
+A = {1, 3, 5, 7}
+B = {2, 3, 5, 7, 11}
+C = {4, 5, 6, 9, 10}
+print(A.isdisjoint(B))
+print(B.isdisjoint(C))
+
+# python set issubset()
+A = {1, 2, 3}
+B = {1, 2, 3, 4, 5}
+print(A.issubset(B))
+
+# python set pop()
+"""randomly removes an item from a set and returns the removed item"""
+A = {'a', 'b', 'c', 'd'}
+removedItem = A.pop()
+print(A)
+
+A = {'a', 'b', 'c', 'd'}
+print(A.pop())
+print(A)
+
+# python set symmetric_difference_update()
+A = {'a', 'c', 'd'}
+B = {'c', 'd', 'e'}
+A.symmetric_difference_update(B)
+print(A)
+print(A.symmetric_difference_update(B))
