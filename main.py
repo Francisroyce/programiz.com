@@ -1502,6 +1502,7 @@ class coordinate(dict):
 print('({x}, {y})'.format_map(coordinate(x='6')))
 print('({x}, {y})'.format_map(coordinate(y='9')))
 print('({x}, {y})'.format_map(coordinate(x='6', y='0')))
+
 # # python set Data type
 """set is an unordered collections of unique items.defined by value separated by
 commas inside braces{}"""
@@ -1702,3 +1703,197 @@ B = {'c', 'd', 'e'}
 A.symmetric_difference_update(B)
 print(A)
 print(A.symmetric_difference_update(B))
+
+# buit-in fucntions
+# python abs()
+"""returns absolute value of the given  number"""
+number = -20
+print(abs(number))
+
+number = -20
+ab = abs(number)
+print(ab)
+
+number = -20.07
+print(abs(number))
+
+number = (-3 - 4j)
+print(abs(number))
+
+# python any()
+"""returns True if any element of an iterable is True. if not, it returns False"""
+boolean_list =['true', 'false', 'true']
+print(any(boolean_list))
+
+# using any() on python list
+I = [1, 3, 4, 0]
+print(any(I))
+
+I = [0, False]
+print(any(I))
+
+I = [0, False, 5]
+print(any(I))
+
+I =[]
+print(any(I))
+
+# using any() on python string
+s = 'this is good'
+print(any(s))
+
+s = '000'
+print(any(s))   #   o is Flase, but here 0 is True since is a string character
+s = ''
+print(any(s))
+
+# python dictionries using any()
+d = {0: "False"}
+print(any(d))
+d = {0: 'False', 1: 'True'}
+print(any(d))
+d = {0: 'False', False: 0}
+print(any(d))
+d = '0:' 'False'
+print(any(d))
+
+# python all()
+I = [1, 3, 4]
+print(all(I))
+
+I = [1, 3, 4, 0]
+print(all(I))
+
+I = [0, False]
+print(all(I))
+
+I = [0, False, 5]
+print(all(I))
+
+I =[]
+print(all(I))
+
+d = {0: "False"}
+print(all(d))
+d = {0: 'False', 1: 'True'}
+print(all(d))
+d = {0: 'False', False: 0}
+print(all(d))
+d = '0:' 'False'
+print(all(d))
+
+# python ascii()
+"""replaces non-printable character withy its correspponding ascii value and returns it"""
+
+# python bin()
+"""converts integers to its binary form"""
+num = 15
+print(bin(num))
+num = 5
+print(bin(num))
+
+# python bin() with a non-integer class
+class quantity:
+    apple = 1
+    orange = 2
+    grapes = 2
+    def func():
+        return apple + orange + grapes
+# print(bin(quantity()))
+"""we have passed an object of class (quantity) to the bin()
+method and got a typeError """
+# this can be fixed using __index__() method
+
+# bin() with __index__() for Non-integer class
+class Quantity:
+    apple = 1
+    orange = 2
+    grapes = 2
+    def __index__(self):
+        return self.apple + self.orange + self.grapes
+print(bin(Quantity()))
+
+# python bool(): returns bool value
+test = 1
+print(test, 'is', bool(test))
+test = False
+print(test, 'is', bool(test))
+test = []
+print(test, 'is', bool(test))
+test = None
+print(test, 'is', bool(test))
+
+# python bytearray
+"""returns bytearray object which is an array of the given bytes"""
+prime_number = [2, 3, 5, 7]
+byte_array = bytearray(prime_number)    # mutable (byearray)
+print(byte_array)
+print(bytes(prime_number))  # immutable (bye)
+
+# array of bytes from a string
+string = 'python is interesting'
+arr = bytearray(string, 'utf -8')
+print(arr)
+
+# array of bytes of a given integer size
+size = 5
+print(bytearray(size))
+
+# python callable()
+"""returns True if the object passed appears callable. if not, it returns False"""
+x = 5
+print(callable(x))
+
+def testfunction():
+    print('Test')
+y = testfunction
+print(callable(y))
+
+# callable object
+class foo:
+    def __call__(self):
+        print('print something')
+print(callable(foo))
+
+# object appears to be callable but isn't callable
+class Foo:
+    def printline(self):
+        print('print something')
+print(callable(Foo))
+
+# python chr()
+"""converts an integer to its unicode character and returns it."""
+print(chr(97))
+a = 98
+print(chr(a))
+print(chr(1200))
+print(chr(65))
+# negative integers are out of range and returns error
+
+# chr() with Non-Integer Arguments
+# print(chr('royce'))  errorvalue too
+
+# compile()
+"""computes python code from a source object and returns it."""
+codeInstring = 'a = 8\nb=7\nsum=a+b\nprint("sum =", sum)'
+codeObject = compile(codeInstring, 'sumstring', 'exec')
+exec (codeObject)
+print(codeObject)
+print(codeInstring)
+
+codeInstring = 'a = 8\nb=7\nMul=a*b\nprint("Mul =", Mul)'
+codeObject = compile(codeInstring, 'Mulstring', 'exec')
+exec (codeObject)
+
+# python classmethod()
+"""returns class method for the given function"""
+class student:
+    marks = 0
+    def computer_marks(self, obtained_marks):
+        marks = obtained_marks
+        print('obtained_marks:', marks)
+# convert computer_marks() to classmethod()
+student.print_marks = classmethod(student.computer_marks)
+student.print_marks(99)
+
+
