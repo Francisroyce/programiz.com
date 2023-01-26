@@ -1999,4 +1999,4 @@ print('x =', point1.x)
 print('y =', point1.y)
 # print('z =', point1.z) Error cos it has been deleted
 
-# deleting attribute using del operator
+# deleting attribute using del operator nn
