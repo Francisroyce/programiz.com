@@ -1896,4 +1896,107 @@ class student:
 student.print_marks = classmethod(student.computer_marks)
 student.print_marks(99)
 
+ # classmethod is always attached to a class
+class person:
+    age = 25
+    def printAge(cls):
+        print("The age:", cls.age)
+person.printAge = classmethod(person.printAge)
+person.printAge()
 
+
+class MyClass:
+    x = [1, 2, 3]
+
+    @classmethod
+    def modify_x(cls, new_val):
+        cls.x.append(new_val)
+
+MyClass.modify_x(4)
+print(MyClass.x) # prints [1, 2, 3, 4]
+
+obj = MyClass()
+obj.modify_x(5)
+print(obj.x)  # prints [1, 2, 3, 4, 5]
+
+class MyClass:
+    @staticmethod
+    def my_static_method():
+        print("This is a static method.")
+
+MyClass.my_static_method() # Output: "This is a static method."
+
+class MyClass:
+    my_variable = 0
+
+    @classmethod
+    def increment_variable(cls):
+        cls.my_variable += 1
+
+print(MyClass.my_variable) # 0
+MyClass.increment_variable()
+print(MyClass.my_variable) # 1
+
+from datetime import date
+
+# random Person
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def fromBirthYear(cls, name, birthYear):
+        return cls(name, date.today().year - birthYear)
+
+    def display(self):
+        print(self.name + "'s age is: " + str(self.age))
+
+person = Person('Francis', 28)
+person.display()
+
+person1 = Person.fromBirthYear('Royce',  1994)
+person1.display()
+
+# python complex()
+z = complex(2, 3)
+print(z)
+
+z = complex(1)
+print(z)
+
+z = complex()
+print(z)
+
+z = complex('5-9j')
+print(z)
+
+# creating complex without using complex
+a = 2+3j
+print('a =', a)
+b = -2j
+print('b = ', b)
+c = 0j
+print('c =', c)
+print(type(a))
+print(type(b))
+print(type(c))
+
+# python delattr()
+"""deletes an attribute from object(if the object allows it)"""
+class Coordinate:
+    x = 10
+    y = -5
+    z = 0
+point1 = Coordinate()
+print('x =', point1.x)
+print('y =', point1.y)
+print('z =', point1.z)
+
+delattr(Coordinate, 'z')
+print('--After deleting z attribute--')
+print('x =', point1.x)
+print('y =', point1.y)
+# print('z =', point1.z) Error cos it has been deleted
+
+# deleting attribute using del operator
