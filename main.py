@@ -2135,5 +2135,102 @@ remainder = 7 % 3
 print(quotient)
 print(remainder)
 
-# python enumerator
-"""enumerator"""
+# python enumerator()
+"""enumerator() function adds a counter to an iterable and returns it(the enumerate object)"""
+language = ['python', 'java', 'javascript']
+enumerate_prime = enumerate(language)
+print(list(enumerate_prime))
+print(enumerate_prime)  # no list
+
+# you can convert enumerate objects to list and tuple using list() and tuple()
+grocery = ['bread', 'milk', 'butter']
+enumerateGrocery = enumerate(grocery)
+print(type(enumerateGrocery))
+print(list(enumerateGrocery))
+
+# changing the default counter
+enumerateGrocery = enumerate(grocery, 10)
+print(list(enumerateGrocery))
+
+enumerateGrocery = enumerate(grocery, 1)
+print(list(enumerateGrocery))
+
+# loop over an enumerate object
+grocery = ['bread', 'milk', 'butter']
+for item in enumerate(grocery, 1):
+    print(item)
+
+print()
+
+for count, item in enumerate(grocery):
+    print(count, item)
+
+print()
+
+for count, item in enumerate(grocery, 100):
+    print(count, item)
+
+for count, item in enumerate(grocery, 100):
+    print((count, item))
+
+for count, item in enumerate(grocery, 100):
+    print((count), (item))
+
+# python filter()
+"""filter() function selects elements from an iterable (list, tuple etc.) based on the output
+of a function.
+the function is applied to each element of the iterable and if it returns True, the element
+is selected by the filter() functions
+"""
+def check_even(number):
+    if number % 2 == 0:
+        return True
+    return False
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# if an element passed to check_even() returns True, select it
+even_numbers_iterator = filter(check_even, numbers)
+# convert to list
+even_numbers = list(even_numbers_iterator)
+print(even_numbers)
+
+def check_even(number):
+    if number % 2 == 0:
+        return True
+    return False
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# if an element passed to check_even() returns True, select it
+even_numbers_iterator = filter(check_even, numbers)
+# convert to list
+even_numbers = tuple(even_numbers_iterator)   # tuple
+print(even_numbers)
+
+def check_even(number):
+    if number % 2 == 0:
+        return True
+    return False
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# if an element passed to check_even() returns True, select it
+even_numbers_iterator = filter(check_even, numbers)
+# convert to list
+even_numbers = set(even_numbers_iterator)  # set
+print(even_numbers)
+
+letters = ['a', 'b', 'c', 'e', 'i', 'j', 'o']
+def filter_vowels(letter):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    return True if letter in  vowels else False
+filter_vowels = filter(filter_vowels, letters)
+vowels = tuple(filter_vowels)
+print(vowels)
+
+# using lambda function inside filter()
+numbers = [1, 2, 3, 4, 5, 6, 7]
+even_numbers_iterator = filter(lambda x: (x%2 == 0), numbers)
+even_numbers = list(even_numbers_iterator)
+print(even_numbers)
+
+# using None as a function inside filter()
+random_list = [1, 'a', 0, False, True, '0']
+filter_iterator = filter(None, random_list)
+filter_list = list(filter_iterator)
+print(filter_list)
