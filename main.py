@@ -1,4 +1,4 @@
- full lesson from Francis Royce1
+ # full lesson from Francis Royce1
 
 # day1 assigning values to variables
 
@@ -1503,9 +1503,9 @@ print('{x} {y} {z}'.format_map(point))
 class coordinate(dict):
     def __missing__(self, key):
         return key
-print('({x}, {y})'.format_map(coordinate(x='6')))
-print('({x}, {y})'.format_map(coordinate(y='9')))
-print('({x}, {y})'.format_map(coordinate(x='6', y='0')))
+# print('({x}, {y})'.format_map(coordinate(x='6')))
+# print('({x}, {y})'.format_map(coordinate(y='9')))
+# print('({x}, {y})'.format_map(coordinate(x='6', y='0')))
 
 # # python set Data type
 """set is an unordered collections of unique items.defined by value separated by
@@ -2234,3 +2234,197 @@ random_list = [1, 'a', 0, False, True, '0']
 filter_iterator = filter(None, random_list)
 filter_list = list(filter_iterator)
 print(filter_list)
+
+# python eval()
+"""parses the expression passed to this method and runs python expression (code)
+within the program."""
+number =9
+square_number = eval('number * number')
+print(square_number)
+
+x = 1
+print(eval('x + 1'))
+
+# practical example to demonstrate use of eval
+
+# parameter of square
+# Perimeter of Square
+def calculatePerimeter(l):
+    return 4*l
+
+# Area of Square
+def calculateArea(l):
+    return l*l
+
+expression = input("Type a function: ")
+
+for l in range(1, 5):
+    if (expression == 'calculatePerimeter(l)'):
+        print("If length is ", l, ", Perimeter = ", eval(expression))
+    elif (expression == 'calculateArea(l)'):
+        print("If length is ", l, ", Area = ", eval(expression))
+    else:
+        print('Wrong Function')
+        break
+
+from math import *
+print(eval('dir()'))
+
+# passing empty dictionary as globals parameter
+
+# from math import *
+# print(eval('dir()', {}))
+#
+# # The code will raise an exception
+# print(eval('sqrt(25)', {}))
+
+# making certain method available
+from math import *
+print(eval('dir()', {'sqrt': sqrt, 'pow': pow}))
+
+from math import *
+names = {'square_root': sqrt, 'power': pow}
+print(eval('dir()', names))
+
+# Using square_root in Expression
+print(eval('square_root(9)', names))
+
+#  Passing both globals and locals dictionary
+from math import *
+
+a = 169
+print(eval('sqrt(a)', {'__builtins__': None}, {'a': a, 'sqrt': sqrt}))
+
+# python float()
+int_number = 25
+
+# convert int to float
+float_number = float(int_number)
+print(float_number)
+
+# How float() works in Python?
+# for integers
+print(float(10))
+
+# for floats
+print(float(11.22))
+
+# for string floats
+print(float("-13.33"))
+
+# for string floats with whitespaces
+print(float("     -24.45\n"))
+
+# string float error
+# print(float("abc"))
+
+# float() for infinity and Nan(Not a number)?
+# for NaN
+print(float("nan"))
+print(float("NaN"))
+
+# for inf/infinity
+print(float("inf"))
+print(float("InF"))
+print(float("InFiNiTy"))
+print(float("infinity"))
+
+# python format()
+value = 45
+
+# format the integer to binary
+binary_value = format(value, 'b')
+print(binary_value)
+# b is for binary
+
+# Number formatting with format()
+# d, f and b are type
+
+# integer (d)
+print(format(123, "d"))
+
+# float arguments (f)
+print(format(123.4567898, "f"))
+
+# binary format(b)`
+print(format(12, "b"))
+
+# Number formatting with fill, align, sign, width, precision and type
+# integer
+print(format(1234, "*>+7,d"))
+
+# float number
+print(format(123.4567, "^-09.3f"))
+"""
+Here, when formatting the integer 1234, we've specified the formatting specifier *>+7,d. Let's understand each option:
+
+* - It is the fill character that fills up the empty spaces after formatting
+> - It is the right alignment option that aligns the output string to the right
++ - It is the sign option that forces the number to be signed (having a sign on its left)
+7 - It is the width option that forces the number to take a minimum width of 7, other spaces will be filled by fill
+ character
+, - It is the thousands operator that places a comma between all thousands.
+d - It is the type option that specifies the number is an integer.
+When formatting the floating point number 123.4567, we've specified the format specifier ^-09.3f. These are:
+
+^ - It is the center alignment option that aligns the output string to the center of the remaining space
+- - It is the sign option that forces only negative numbers to show the sign
+0 - It is the character that is placed in place of the empty spaces.
+9 - It is the width option that sets the minimum width of the number to 9 (including decimal point, thousands comma
+and sign)
+.3 - It is the precision operator that sets the precision of the given floating number to 3 places
+f - It is the type option that specifies the number is a float."""
+
+# Using format() by overriding __format__()
+# custom __format__() method
+class Person:
+    def __format__(self, format):
+        if(format == 'age'):
+            return '23'
+        return 'None'
+
+print(format(Person(), "age"))
+
+# python frozenset()
+"""The frozenset() function returns an immutable frozenset object 
+initialized with elements from the given iterable"""
+# tuple of vowels
+vowels = ('a', 'e', 'i', 'o', 'u')
+
+fSet = frozenset(vowels)
+print('The frozen set is:', fSet)
+print('The empty frozen set is:', frozenset())
+
+# frozensets are immutable
+# fSet.add('v')
+
+# random dictionary
+person = {"name": "John", "age": 23, "sex": "male"}
+
+fSet = frozenset(person)
+print('The frozen set is:', fSet)
+
+A = frozenset([1, 2, 3, 4])
+B = frozenset([3, 4, 5, 6])
+C = A.copy()
+print(C)
+
+print(A.union(B))
+print(A.intersection(B))
+print(A.difference(B))
+print(A.symmetric_difference(B))
+
+# Frozensets
+# initialize A, B and C
+A = frozenset([1, 2, 3, 4])
+B = frozenset([3, 4, 5, 6])
+C = frozenset([5, 6])
+
+# isdisjoint() method
+print(A.isdisjoint(C))  # Output: True
+
+# issubset() method
+print(C.issubset(B))  # Output: True
+
+# issuperset() method
+print(B.issuperset(C))  # Output: True
