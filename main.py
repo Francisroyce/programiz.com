@@ -2386,7 +2386,7 @@ class Person:
 print(format(Person(), "age"))
 
 # python frozenset()
-"""The frozenset() function returns an immutable frozenset object 
+"""The frozenset() function returns an immutable frozenset object
 initialized with elements from the given iterable"""
 # tuple of vowels
 vowels = ('a', 'e', 'i', 'o', 'u')
@@ -2428,3 +2428,396 @@ print(C.issubset(B))  # Output: True
 
 # issuperset() method
 print(B.issuperset(C))  # Output: True
+
+# python getattr()
+"""The getattr() method returns the value of the named attribute of an object. If not found,
+it returns the default value provided to the function.
+"""
+class Student:
+    marks = 99
+    name = 'Francis Royce'
+person = Student()
+name = getattr(person, 'name')
+print(name)
+marks = getattr(person, 'marks')
+print(marks)
+
+# How getattr() works in Python?
+class Person:
+    age = 28
+    name = 'Francis Royce'
+person =Person()
+print('the age is:', getattr(person, 'age'))
+print('the age is:', person.age)
+print('the name is:', person.name)
+print('the name is:', getattr(person, 'name'))
+
+# getattr() when named attribute is not found
+class Person:
+    age = 23
+    name = "Adam"
+
+person = Person()
+
+# when default value is provided
+print('The sex is:', getattr(person, 'sex', 'Male'))
+
+# when no default value is provided
+# print('The sex is:', getattr(person, 'sex'))  error
+
+# python global()
+"""returns a dictionary with all the global() variables and symbols for the current program"""
+print(globals())
+age = 28
+globals()['age'] = 29
+print('the age is:', age)
+
+age = 28
+Age = globals()['age']
+print('the age is:', Age)
+
+# python exec()
+"""executes a dynamically created program, which is either a string or a code object"""
+program = 'a = 5\nb=10\nprint("sum =", a+b)'
+exec(program)
+# exec() multiline input
+program = input("Enter a program:")
+b = compile(program, 'something', 'exec')
+exec (b)
+
+program = input("Enter a program:")
+exec (program)
+
+# checking usable code with exec()
+from math import *
+exec ('print(dir())')
+
+# blocking all the global buitin methods with the code: {'__builtins__' : None}
+from math import *
+globalsParameter = {'__builtins__' : None}
+localsParameter = {'print': print, 'dir' : dir}
+exec ('print(dir())', globalsParameter, localsParameter)
+
+# python hasattr()
+"""returns true if an object has trhe given named attribute and false if it does not"""
+class Person:
+    age = 23
+    name = 'Francis Royce'
+person = Person()
+print("person's age:", hasattr(person, 'age'))
+print("person's name:", hasattr(person, 'name'))
+print("person's salary:", hasattr(person, 'salary'))
+
+print()
+class Person:
+    age = 23
+    name = 'Francis Royce'
+    salary = '100$'
+person = Person()
+print("person's age:", hasattr(person, 'age'))
+print("person's name:", hasattr(person, 'name'))
+print("person's salary:", hasattr(person, 'salary'))
+
+# python help()
+"""calls the built-in python help system"""
+print(help(list))
+print()
+print(help(dict))
+print(help(print))
+print(help([1, 2, 3]))
+print(help('random thing'))
+print(help(str))
+print(help(help))
+print(help('print'))
+print(help('def'))
+from math import *
+help('math.pow')
+help(True)
+help(quit)
+
+# python hex()
+number = 45
+print(number, 'in hex =', hex(number))
+returnNumber = hex(number)
+print(type(returnNumber))
+
+# hex representation of a flaot
+number = 2.0
+print(number, 'in hex =', float.hex(number))
+
+# python hash
+text = 'Python Programming'
+hashValue = hash(text)
+print(hashValue)
+
+# hash for integer is unchanged
+print(hash(123))
+# hash for decimal
+print(hash(123.99))
+# hash for string
+print(hash('Francis Royce'))
+
+# hash for immutable tuple object
+numbers = (1, 2, 3, 4, 5,)
+print(hash(numbers))
+
+# hash() for custom objects ny overriding__hash__()
+class Person:
+    def __init__(self, age, name):
+        self.age = age
+        self.name = name
+    def __eq__(self, other):
+        return self.age == other.age and self.name == other.name
+    def __hash__(self):
+        print('The hash is:')
+        return hash((self.age, self.name))
+person =Person(28, 'Francis Royce')
+print(hash(person))
+
+# python input()
+strings = input()
+print('The inputted string is:', strings)
+
+
+strings = input('Enter a string:')
+print("the inputted string is:", strings)
+
+# python id()
+a =3
+b =6
+sum = a + b
+print(sum)
+print(id(sum))
+
+class Food:
+    banana = 15
+food = Food()
+print(id(food))
+
+fruits = {'oranges', 'banana', 'mango'}
+print(id(fruits))
+
+numbers =[1, 2, 3, 4,5]
+print(isinstance(numbers, list))
+print(isinstance(numbers, tuple))
+
+class Foo:
+    a = 5
+fooinstance = Foo()
+print(isinstance(fooinstance, Foo))
+print(isinstance(fooinstance, (list, tuple)))
+print(isinstance(fooinstance,(tuple, list, Foo)))
+
+# python int()
+print(int(123))
+print(int(9.999))
+print(int('123'))
+print(int('0b101', 2))
+# int() for custom objects
+"""even if an object is not a number, we can still convert it to an integer object
+we can do this by overriding __index__() and __int__()"""
+class Person:
+    age = 23
+    def __index__(self):
+        return self.age
+person = Person()
+print('int(person) is :', int(person))
+
+# python issubclass()
+class Polygon:
+    def __init__(polygonType):
+        print('Polygon is a', polygonType)
+class Triangle(Polygon):
+    def __init__(self):
+        polygon.__init__('triangle')
+print(issubclass(Triangle,Polygon))
+print(issubclass(Triangle, list))
+print(issubclass(Triangle, (list, Polygon)))
+print(issubclass(Polygon, (list, Polygon)))  # a class is a subclass of itself
+
+# python iter()
+"""returns an iterator for given argument"""
+phones = ['apple', 'samsung', 'tecno']
+phone_iter = iter(phones)
+print(phone_iter)
+print(next(phone_iter))
+print(next(phone_iter))
+print(next(phone_iter))
+
+print()
+for item in phones:
+    print(item)  # shorter
+
+# iter() for
+class PrintNumber:
+    def __init__(self, max):
+        self.max = max
+
+# iter() method in a class
+    def __iter__(self):
+        self.num = 0
+        return self
+# next() method in a class
+    def __next__(self):
+        if(self.num >= self.max):
+            raise StopIteration
+        self.num += 1
+        return self.num
+
+print_num = PrintNumber(3)
+
+print_num_iter = iter(print_num)
+print(next(print_num_iter))  # 1
+print(next(print_num_iter))  # 2
+print(next(print_num_iter))  # 3
+
+# raises StopIteration
+# print(next(print_num_iter))
+print()
+
+# iter() with sentinel parameter
+class DoubleIt:
+
+    def __init__(self):
+        self.start = 1
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        self.start *= 2
+        return self.start
+
+    __call__ = __next__
+
+
+my_iter = iter(DoubleIt(), 16)
+
+for x in my_iter:
+    print(x)
+
+# python list()
+"""the list() constructor rwturns a list in python"""
+text = "Francis Royce"
+text_list = list(text)
+print(text_list)
+print(type(text_list))
+
+# empty list
+print(list())
+# string
+name = 'Royce'
+print(list(name))
+# tuple
+tuple1 = ('r', 'o', 'y', 'c', 'e')
+print(list(tuple1))
+# list
+list1 = ['r', 'o', 'y', 'c', 'e']
+print(list(list1))
+# set
+set1 = {'r', 'o', 'y', 'c', 'e'}
+print(list(set1))
+# dict
+dict1 = {'r': 1, 'o': 2, 'y': 3, 'c': 4, 'e': 5}
+print(list(dict1))
+
+# create a list from an iterator object
+class PowTwo:
+    def __init__(self, max):
+        self.max = max
+    def __iter__(self):
+        self.num = 0
+        return self
+    def __next__(self):
+        if(self.num >= self.max):
+            raise StopIteration
+        result = 2 ** self.num
+        self.num += 1
+        return result
+pow_two = PowTwo(5)
+pow_two_iter = iter(pow_two)
+print(list(pow_two_iter))
+
+# python local()
+# """returns a dict with all the local variable and symbols for the current program"""
+print(locals())
+class local:
+    l = 50
+    print('\nlocals() value inside class\n', locals())
+
+def localsPresent():
+    present = True
+    print(present)
+    locals()['present'] = False;
+    print(present)
+localsPresent()
+
+# how len() works for custom objects
+class Session:
+    def __init__(self, number):
+        self.number = 0
+    def __len__(self):
+        return self.number
+s1 = Session(0)
+print(len(s1))
+s2 = Session(6)
+print(len(s2))
+
+print()
+class Session:
+    def __init__(self, number = 0):
+        self.number = number
+    def __len__(self):
+        return self.number
+s1 = Session()
+print(len(s1))
+s2 = Session(6)
+print(len(s2))
+
+print()
+# python max()
+""""returns the largest item in an iterable"""
+num = [1, 4, 5, 3, 90, 100]
+print(max(num))
+
+# largest string in a list
+languages = ['python', 'c programming', 'java', 'javascript']
+print(max(languages))
+print()
+# max() in dict
+# largest key
+square = {2: 4, -3: 9, -1: 1, -2: 4}
+print(max(square))
+
+# uss of lambda
+# key with largest value
+key1 = max(square, key= lambda k: square[k])
+print(key1)
+
+# largest value
+print(square[key1])
+
+print()
+# python min()
+""""returns the smallest item in an iterable"""
+num = [1, 4, 5, 3, 90, 100]
+print(min(num))
+
+# lowest string in a list
+languages = ['python', 'c programming', 'java', 'javascript']
+print(min(languages))
+print()
+# max() in dict
+# lowest key
+square = {2: 4, -3: 9, -1: 1, -2: 4}
+print(min(square))
+
+# uss of lambda
+# key with lowest value
+key1 = min(square, key=lambda k: square[k])
+print(key1)
+
+# lowest value
+print(square[key1])
+
+# python map()
