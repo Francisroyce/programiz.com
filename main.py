@@ -2819,5 +2819,184 @@ print(key1)
 
 # lowest value
 print(square[key1])
-
+#
 # python map()
+"""map() function applies a given function to each element of an iterable(list, tuple etc) and returns an
+iterator containing the results"""
+num = [2, 4, 6, 8, 10]
+def square(number):
+    return number * number
+squared_number_iterator = map(square, num)
+squared_numbers =list(squared_number_iterator)
+print(squared_numbers)
+print()
+def calculateSquare(n):
+    return n*n
+numbers = (1, 2, 3, 4)
+result = map(calculateSquare, numbers)
+print(result)
+numbersSquared = set(result)
+print(numbersSquared)
+
+# lambda function with map()
+n = (1, 2, 3, 4)
+result = map(lambda x: x*x, n)
+print(result)
+nn = tuple(result)
+print(nn)
+print()
+# passing multiple iterators to map() using lambda
+num1 = [4, 5, 6]
+num2 = [5, 6, 7]
+result = map(lambda n1, n2: n1+n2, num1, num2)
+print(list(result))
+print()
+def Sum(numbers):
+    return numbers + numbers
+n = [1, 2, 3, 4, 5]
+result = map(Sum, n)
+print(list(result))
+
+n = [1, 2, 3, 4, 5]
+result = map(lambda x: x+x, n)
+print(tuple(result))
+
+# python next
+"""next() function returns the next item from the iterator."""
+mark = [65, 71, 68, 74, 61]
+iterator_marks = iter(mark)
+print(next(iterator_marks))
+print(next(iterator_marks))
+print(next(iterator_marks))
+print(next(iterator_marks))
+print(next(iterator_marks))
+
+# passing default value to next()
+random = [5, 6]
+iterator = iter(random)
+print(next(iterator, '-1'))
+print(next(iterator, '-1'))
+print(next(iterator, '-1'))
+
+# python memoryview()
+"""return a memory view object of the given argument"""
+random_byte_array = bytearray('ABC', 'utf-8')
+mv = memoryview(random_byte_array)
+print(mv[0])
+print(bytes(mv[0:2]))
+print(list(mv[0:3]))
+print()
+# modify internal data using memory view
+random_byte_array = bytearray('ABC', 'utf-8')
+print(random_byte_array)
+mv = memoryview(random_byte_array)
+mv[1] = 90
+print(random_byte_array)
+
+# python object()
+"""returns a featureless object which is a base for all classes"""
+test = object()
+print(test)
+print(type(test))
+print(dir(test))
+
+# python oct()
+"""takes an integer number and returns its octal representation"""
+a =10
+print(oct(a))
+
+b = 90.99
+c =int(b)
+print(oct(c))
+print(oct(0b101))
+print(oct(0XA))
+print()
+class Person:
+    age =23
+    def __index__(self):
+        return self.age
+    def __init__(self):
+        return None
+person = Person()
+print(oct(person))
+
+class Person:
+    age =23
+    def __index__(self):
+        return self.age
+    def __int__(self):
+        return self.age
+person = Person()
+print(oct(person))
+
+# python ord()
+"""returns an integer representing the Unicode character"""
+character = 'P'
+unicode_char = ord(character)
+print(unicode_char)
+print(ord('A'))
+print()
+# python pow(): computes power of a number
+print(pow(3, 4))
+print(pow(3, 4, 1))
+# pow() with modulus
+x = 7
+y = 2
+z = 5
+print(x**y % z)
+print(pow(x, y, z))
+print()
+# pytho print()
+# print() with separator and end parameters
+a = 6
+print('a =', a)
+print('a =', a, sep='00000', end='\n\n\n')
+print('a =', a, sep='0', end='')
+
+sourceFile = open('python.txt', 'w')
+print('pretty cool, huh!', file=sourceFile)
+sourceFile.close()
+
+ # python property()
+ # """returns the property attribute"""
+ # create attribute with getter, setter, and deleter
+
+class Person:
+     def __init__(self, name):
+         self._name = name
+     def get_name(self):
+        print('getting name')
+        return self._name
+     def set_name(self, value):
+        print('setting name to ' + value)
+        self._name = value
+     def del_name(self):
+        print('deleting name')
+        del self._name
+     name = property(get_name, set_name, del_name, 'name property')
+person = Person('The name is: Francis')
+print(person.name)
+person.name = 'Royce'
+del person.name
+
+# using @property decorator
+class Person:
+    def __init__(self, name):
+        self._name = name
+    @property
+    def name(self):
+        print("Getting name")
+        return self._name
+    @name.setter
+    def name(self, value):
+        print('Setting name to ' + value)
+        self._name = value
+    @name.deleter
+    def name(self):
+        print('Deleting name')
+        del self._name
+person = Person("Francis Royce")
+print('The name is:', person.name)
+person.name = 'Royce'
+del person.name
+
