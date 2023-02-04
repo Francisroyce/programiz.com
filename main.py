@@ -3000,3 +3000,417 @@ print('The name is:', person.name)
 person.name = 'Royce'
 del person.name
 
+# python round()
+"""returns a floating-point number rounded to the specified number of decimals."""
+num =23.9
+print(round(num))
+
+print(round(10))
+print(round(10.7))
+
+# round a number to the given number of decimal places
+print(round(2.945999, 2))
+
+print(round(2.675, 2))
+# for precision needed in the case of 2.675 use decimal module
+from decimal import Decimal
+num = 2.675
+print(round(num, 2))
+print(Decimal(num))
+num = Decimal('2.675')
+print(round(num, 2))
+print(Decimal(round(num, 2)))
+print()
+# python setattr()
+"""sets the value of the attribute of an object"""
+class Student:
+    mark: 99
+    name = 'Royce'
+student = Student()
+setattr(student, 'name', 'Francis')
+print(student.name)
+
+setattr(student, 'mark', 100)
+print(student.mark)
+print()
+class Person:
+    name = "Francis"
+p = Person()
+print('before modification:', p.name)
+setattr(p, 'name', 'Royce')
+print('after modification:', p.name)
+
+# when atrribute is not found in stattr(), it creates a new attribute
+class Person:
+    name = 'Francis Royce'
+p = Person()
+setattr(p, 'name', 'Okoronkwo Ifeanyi.I.')
+print(p.name)
+
+setattr(p, 'age', 28)
+print(p.age)
+print()
+# python slice()
+"""returns a slice object that is used to slice any sequence (string, tuple, list, range, or bite)"""
+test = 'python programming'
+sliced_test = slice(6)
+print(test[sliced_test])
+
+# create a slice object for slicing
+result = slice(3)
+print(result)
+
+result = slice(1, 2, 3)
+print(result)
+
+# getting substring using slice object
+string = 'python'
+slice_object = slice(3)
+print(string[slice_object])
+slice_object = slice(1, 6, 2)
+print(string[slice_object])
+
+# using negative index
+string = 'python'
+slice_object = slice(-1, -4, -1)
+print(string[slice_object])
+
+# get sublist and sub-tuple
+pyList = ['p', 'y', 't', 'h', 'o', 'n']
+pyTuple = ('p', 'y', 't', 'h', 'o', 'n')
+slice_object = slice(3)
+print(pyList[slice_object])
+print(pyTuple[slice_object])
+slice_object = slice(1, 5, 2)
+print(pyTuple[slice_object])
+
+# python sorted()
+"""sorts the elements of a given iterable in a specific oder (ascending or descending) and returns it as a list.
+A list also has the Sort() method which performs the same way as sorted(). The difference is that the sort()
+method doesn't return any value and changes the original list
+"""
+num = [1, 4, 3, 5, 2]
+print(sorted(num))
+
+num = [1, 4, 3, 5, 2]
+num.sort()
+print(num)
+
+num = [1, 4, 3, 5, 2]
+num.sort(reverse=True)
+print(num)
+
+# sort in descending order
+num = [1, 4, 3, 5, 2]
+print(sorted(num, reverse=True))
+
+# sort the list using sorted() having a key function
+def take_seconds(elem):
+    return elem[1]
+random = [(2, 2), (3, 4), (4, 1), (1, 3)]
+sorted_list = sorted(random, key=take_seconds)
+print(sorted_list)
+
+# sorted with multiple keys
+participant_list =[
+    ('Francis', 50, 18),
+    ('Royce', 75, 12),
+    ('Ifeanyi', 75, 20),
+    ('Okoronkwo', 90, 22),
+    ('Roy', 45, 12)
+]
+def sorter(item):
+    error = 100 - item[1]
+    age = item[2]
+    return (error, age)
+sorted_list = sorted(participant_list, key=sorter)
+print(sorted_list)
+
+# using lambda
+participant_list =[
+    ('Francis', 50, 18),
+    ('Royce', 75, 12),
+    ('Ifeanyi', 75, 20),
+    ('Okoronkwo', 90, 22),
+    ('Roy', 45, 12)
+]
+sorted_list = sorted(participant_list, key=lambda item: (100 - item[1], item[2]))
+print(sorted_list)
+print()
+# python sum()
+"""adds the items of an iterable and returns the sum"""
+marks = [1, 2, 3, 4, 5, 6]
+print(sum(marks))
+
+num = sum(marks, 10)
+print(num)
+print()
+# using math.fsum(iterable) for float
+import math
+num = [1.0, 2.4, 3.5, 7.9]
+total = math.fsum(num)
+print(total)
+print(round(total))
+
+# python vars()
+"""returns the __dict__(dictionary mapping) attribute of the given object."""
+print(vars(list))
+print(vars())
+
+# vars with custom object
+class Fruit:
+    def __init__(self, apple =5, banana =10):
+        self.apple = apple
+        self.banana = banana
+eat = Fruit()
+print(vars(eat))
+
+# python zip()
+"""takes iterables (can be zero or more), aggregates them in a tuple, and return it."""
+languages = ['java', 'python', 'javaScript']
+versions = [14, 3, 6]
+result = zip(languages, versions)
+print(result)
+print(list(result))
+
+num = [1, 2, 3, 4]
+string = ['one', 'two', 'three', 'four']
+result = zip()
+print(list(result))
+result = zip(string, num)
+print(set(result))
+print()
+
+num = [1, 2, 3, 4]
+string = ['one', 'two', 'three', 'four']
+string2 = ['ONE', 'TWO', 'THREE', 'FOUR']
+result = zip()
+print(list(result))
+result = zip(string, num, string2)
+print(set(result))
+
+# unzipping the value usung zip
+coordinate = ['x', 'y', 'z']
+value = [3, 4, 5]
+result = zip(coordinate, value)
+print(list(result))
+
+coordinate = ['x', 'y', 'z']
+value = [3, 4, 5]
+result = zip(coordinate, value)
+result_list = list(result)
+c, v = zip(*result_list)
+print('c =', c)
+print('v =', v)
+
+# python super()
+"""returns a proxy object (temporary object of the superclass) that allows us to access methods of the base.
+super(): allows us to avoid using the base class name explicitly
+working with multiple inheritance"""
+class Animal(object):
+    def __init__(self, animal_type):
+        print('Animal Type:', animal_type)
+class Mammal(Animal):
+    def __init__(self):
+        super().__init__('Mammal')
+        print('Mammals give birth directly')
+dog = Mammal()
+print()
+# super() with single inheritance
+class Mammal(object):
+    def __init__(self, mammalName):
+        print(mammalName, 'is a warm-blooded animal.')
+class Dog(Mammal):
+    def __init__(self):
+        print('Dog has four legs.')
+        super().__init__('Dog')
+d1 = Dog()
+
+super() with multiple inheritance
+class Animal:
+    def __init__(self, Animal):
+        print(Animal, 'is an animal.');
+class Mammal(Animal):
+    def __init__(self, mamalName):
+        print(mamalName, 'is a warm-blooded animal.')
+        super().__init__(mamalName)
+class NonWingedMammal(Mammal):
+    def __init__(self, NonWingedMammal):
+        print(NonWingedMammal, "can't fly.")
+        super().__init__(NonWingedMammal)
+class NonMarineMammal(Mammal):
+    def __init__(self, NonMarineMammal):
+        print(NonMarineMammal, "can't swim.")
+        super().__init__(NonMarineMammal)
+class Dog(NonMarineMammal, NonWingedMammal):
+    def __init__(self):
+        print('Dog has four legs.')
+        super().__init__('Dog')
+d = Dog()
+print('')
+bat = NonMarineMammal('Bat')
+
+# python dictionary data type
+""""it is an ordered collection of items. it stores elements in key/value pairs."""
+capital_city = {'Abia': 'Umuahia', 'Delta': "Asaba", 'Ebonyi': 'Abakiliki'}
+print(capital_city)
+print()
+
+# access dictionary values using keys
+capital_city = {'Abia': 'Umuahia', 'Delta': "Asaba", 'Ebonyi': 'Abakiliki'}
+print(capital_city['Abia'])
+print(capital_city['Delta'])
+
+numbers = {1: 'one', 2: 'two', 3: 'three'}
+print(numbers)
+print(numbers[1])
+
+# add element to a dictionary
+capital_city = {'Abia': 'Umuahia', 'Delta': "Asaba", 'Ebonyi': 'Abakiliki'}
+print('initial dictionary:', capital_city)
+capital_city['Adamawa'] = 'Yola'
+print('updated dictionary:', capital_city)
+print()
+
+
+# change value of dictionary
+student_id = {111: 'Royce', 112: 'Francis', 113: 'Ifeanyi'}
+print(student_id)
+student_id[113] = 'Okoronkwo'
+print(student_id)
+print()
+# removing elements from dictionary: we use del statement
+student_id = {111: 'Royce', 112: 'Francis', 113: 'Ifeanyi'}
+del student_id[113]
+print(student_id)
+
+# dictionary membership
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+print(1 in squares)
+print(2 in squares)
+print(49 in squares)
+
+# iterating through a dictionary keys
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+for i in squares:
+    print(i)
+print()
+# iterating through a dictionary value
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+for i in squares:
+    print(squares[i])
+print()
+# python dictionary clear()
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+squares.clear()
+print(squares)
+
+# python dictionary copy()
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+copied_squares = squares.copy()
+print('original squares:', squares)
+print('copied squares:', copied_squares)
+
+# using operator to copy (=)
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+new = squares
+print(new)
+print()
+# shallow copy, you can remove the new list and it will not affect the original list
+squares = {1: 1, 3: 9, 5: 25, 7:49, 9:81}
+new = squares.copy()
+print('new:', new)
+new.clear()
+print('new after clear:', new)
+print('original:', squares)
+
+# python dictionary fromkeys()
+"""creates a dictionary from the given sequence of keys and values"""
+alpha = {'a', 'b', 'c', 'd'}
+number = 1
+dictionary = dict.fromkeys(alpha, number)
+print(dictionary)
+print()
+# fromkeys() without value
+alpha = {'a', 'b', 'c', 'd'}
+number = dict.fromkeys(alpha)
+print(number)
+
+# fromkeys() to create a dictionary from mutable object
+alpha = {'a', 'b', 'c', 'd'}
+value = [1]
+number = dict.fromkeys(alpha, value)
+print(number)
+value.append(2)
+print(number)
+print()
+
+# dictionary comprehension fro mutable objects
+"""we can use dictionary comprehension and prevent updating the dictionary when the mutable object
+(list, dictionary etc) is updated"""
+alpha = {'a', 'b', 'c', 'd'}
+value = [1]
+number = {key : list(value) for key in alpha}
+print(number)
+value.append(2)
+print(number)
+print()
+
+square_dict = dict()
+for num in range(1, 11):
+    square_dict[num] = num*num
+print(square_dict)
+
+# using dictionary comprehension of the above program
+square_dict = {num : num*num for  num in range(1, 11)}
+print(square_dict)
+print()
+
+old_list = {'milk': 1.03, 'bread': 2.23, 'coffee': 2.5}
+dollar_to_pound = 0.76
+new_price = {item: value*dollar_to_pound for (item, value) in old_list.items()}
+print(new_price)
+
+# If condition\l dictionary comprehension
+original_dict = {'Royce': 38, 'Francis': 48, 'Ifeanyi': 57, 'Okoronkwo': 33 }
+even_dict = {k: v for (k, v) in original_dict.items() if v % 2 == 0}
+print(even_dict) # only the items with even value added cos of if clause
+print()
+
+# multiple conditional dictionary comprehension
+original_dict = {'Royce': 38, 'Francis': 48, 'Ifeanyi': 57, 'Okoronkwo': 33 }
+new_dict = {k: v for (k, v) in original_dict.items() if v % 2 != 0 if v < 40}
+print(new_dict) # only the items with an odd value of less than 40 have been added
+print()
+
+# if - else conditional dictionary comprehension
+original_dict = {'Royce': 38, 'Francis': 48, 'Ifeanyi': 57, 'Okoronkwo': 33 }
+new_dict = {k: ('old' if v > 40 else 'young')
+            for (k, v) in original_dict.items()}
+print(new_dict)
+print()
+
+# nested dictionary comprehension
+"""we can add dictionary comprehension to dictionary comprehension themselves to create nested dcitionaries"""
+dictionary = {
+    k1: {k2: k1 * k2 for k2 in range(1, 6)} for k1 in range(2, 5)
+}
+print(dictionary)
+print('\n')
+# the above code will eb equivalent
+dictionary = dict()
+for k1 in range (2, 5):
+    dictionary[k1] = {k2: k1 * k2 for k2 in range(1, 6)}
+print(dictionary)
+print('\n')
+
+# it can further be broken down as:
+dictionary = dict()
+for k1 in range(2, 5):
+    dictionary[k1] = dict()
+    for k2 in  range (1, 6):
+        dictionary[k1][k2] = k1*k2
+print(dictionary)
+
+# python dictionary get()
+"""returns the value for the specified key if the key is in the dictionary"""
