@@ -3411,6 +3411,570 @@ for k1 in range(2, 5):
     for k2 in  range (1, 6):
         dictionary[k1][k2] = k1*k2
 print(dictionary)
-
+#
 # python dictionary get()
 """returns the value for the specified key if the key is in the dictionary"""
+marks = {'maths': 90, 'physics': 88}
+print(marks.get('physics'))
+
+person = {'name': 'Royce', 'age': 28}
+print('name:', person.get('name'))
+print('age:', person.get('age'))
+print('salary:', person.get('salary'))
+print('salary:', person.get('salary', 0.0))
+
+# python dictionary items()
+"""returns a view object that displays a list of dictionary's(key, value) tuple pairs"""
+marks = {'maths': 90, 'physics': 88}
+print(marks.items())
+
+marks = {'maths': 90, 'physics': 88}
+items = marks.items()
+print('original items:', items)
+del[marks['physics']]
+print('updated items:', items)
+
+# python dictionary keys()
+""""extracts the keys of the dictionary and returns the list of keyts as a view object"""
+marks = {1: 'one', 2: 'two', 3: 'three'}
+dict_keys = marks.keys()
+print(dict_keys)
+
+# python dictionary update
+marks = {1: 'one', 2: 'two', 3: 'three'}
+dict_keys = marks.keys()
+print('before update:', dict_keys)
+marks.update({4: 'four'})
+print('after update:', dict_keys)
+
+# python dictionary popitem()
+"""removes and returns the last element (key, value) pair inserted into the dictionary"""
+marks = {1: 'one', 2: 'two', 3: 'three'}
+dict_keys = marks.popitem()
+print(marks)
+print(dict_keys)
+marks[4] = 'four'
+dict_keys = marks.popitem()
+print(marks)
+print(dict_keys)
+
+# python dictionary setdefault()
+"""returns the value of a key(if the key is in dictionary), if not, it inserts key with a value to the dictionary"""
+marks = {1: 'one', 2: 'two', 3: 'three'}
+one_1 = marks.setdefault(1)
+print(marks)
+print(one_1)
+
+# if the key is not in the dictionary
+marks = {1: 'one', 2: 'two', 3: 'three'}
+dict_keys = marks.setdefault(5)
+print(marks)
+print(dict_keys)
+dict_keys = marks.setdefault(4, 'four')
+print(marks)
+print(dict_keys)
+
+# python dikctionary pop()
+"""removes and returns an element from a dictionary having the given key"""
+marks = {1: 'one', 2: 'two', 3: 'three'}
+elem = marks.pop(1)
+print(elem)
+print(marks)
+
+# pop an element not present in the dictionary
+marks = {1: 'one', 2: 'two', 3: 'three'}
+# elem = marks.pop(4)
+# print(marks)  Error
+# print(elem)
+#
+# pop element not present from the dictionary, provided a default value
+marks = {1: 'one', 2: 'two', 3: 'three'}
+elem = marks.pop(4, 5)
+print(elem)
+print(marks)
+
+# python dictionary values()
+"""returns a view object that displays a list of all the values in the dictionary"""
+marks = {1: 'one', 2: 'two', 3: 'three'}
+print(marks.values())
+print()
+marks = {1: 'one', 2: 'two', 3: 'three'}
+elem = marks.values()
+print(marks)
+print(elem)
+del [marks[1]]
+print(elem)
+print(marks)
+
+# python dictionary update
+"""updates the dictionary with the elements from another dictionary object"""
+marks = {1: 'one', 2: 'two', 3: 'three'}
+elem = {4: 'four', 5: 'five'}
+marks.update(elem)
+print(marks)
+print(elem)
+print(marks, elem)
+
+# update() when tuple is passed
+dictionary = {'x': 2}
+dictionary.update([('y', 3), ('z', 0)])
+print(dictionary)
+
+python type conversion
+implicit = automatic
+explicit = manual
+python implicit type conversion (integer to float)
+integer_number = 123
+float_number = 1.23
+new_number = integer_number + float_number
+print('value:', new_number)
+print('Data type:', type(new_number))
+
+# explicit type conversion
+"users convert data type of an object to required data type"
+# addition of string and integer using explicit conversion
+number_string = '12'
+num_integer = 23
+print('data type of num_string before type casting:', type(number_string))
+number_string = int(number_string)
+print('data type of num_string before type casting:', type(number_string))
+num_sum = num_integer + number_string
+print('sum:', num_sum)
+print('data type of num_sum:', type(num_sum))
+print('\n')
+
+# python basic input and output (I\O)
+"ways to  display output to users and take input from users in python"
+# python print statement
+print('Good morning!')
+print('it is a rainy day')
+# python print with end parameter
+print('Good morning!', end=' ')
+print('it is a rainy day')
+
+# python print with sep parameter
+print('new year', 2023, 'see you soon', sep='. ')
+
+# output formatting
+"sometimes we will like to format our output to make it look attractive using (str.format())"
+x = 5
+y = 10
+print('the value of x is {} and y is {}'.format(x, y))
+
+# python user Ipnut
+num = input('Enter a number:')
+print('You Entered:', num)
+print('Data type of num:', type(num))
+
+# converting to integer
+num = int(input('Enter a number:'))
+print('You Entered:', num)
+print('Data type of num:', type(num))
+
+# python operators (types)
+print(4 + 5)
+# python Arithmetic operator
+a = 9
+b = 6
+print('sum:', a + b)
+print(b - a)
+print(a -b)
+print(a*b)
+print(a/b)
+print(a//b)
+print(a%b)
+print(a**b)
+print()
+# python assignment operators
+a = 10
+b = 5
+a += b
+print(a)
+a -= b
+print(a)
+a *= b
+print(a)
+a /= b
+print(a)
+a //= b
+print(a)
+a %= b
+print(a)
+a **= b
+print(a)
+print()
+# python comparison operators
+a = 10
+b = 5
+print(a > b)
+print(a<b)
+print(a==b)
+print(a!=b)
+print(a>=b)
+print(a<=b)
+print()
+
+# python logical operators
+a = 10
+b = 5
+print((a > 2) and (b >= 5))
+print((a > 2) or (b >= 5))
+print((a > 2), not (b >= 5))
+print()
+
+print(True and False)
+print(True and True)
+print(True or False)
+print(not True)
+print(not False)
+print()
+# python bitwise operators
+a = 5
+b = 3
+print(a & b)
+print(a | b)
+print(a, ~ b)
+print(a ^ b)
+print(a >> b)
+print(a << b)
+print()
+# python identity operators in python
+a = 5
+b = 5
+c = 'hello'
+d = 'hello'
+e = [1, 2, 3]
+f = [1, 2, 3]
+print(a is not b)
+print(c is d)
+print(e is f)  # equal not identical for a list
+print()
+# membership operator
+"""note, in a dictionary we can only test for the presence of key and not the value"""
+a = 'hello world'
+b = {1: 'one', 2: 'one'}
+print('h' in a)
+print('hello' in a)
+print('Hello' in a)
+print(1 in b)
+print(2 in b)
+print(3 in b)
+print()
+# Python Namespace and Scope
+# Scope and Namespace in Python
+# global_var is in the global namespace
+global_var = 10
+
+def outer_function():
+    #  outer_var is in the local namespace
+    outer_var = 20
+
+    def inner_function():
+        #  inner_var is in the nested local namespace
+        inner_var = 30
+
+        print(inner_var)
+
+    print(outer_var)
+
+    inner_function()
+
+# print the value of the global variable
+print(global_var)
+
+# call the outer function and print local and nested local variables
+outer_function()
+print()
+# Use of global Keyword in Python
+# define global variable
+global_var = 10
+
+def my_function():
+    # define local variable
+    local_var = 20
+
+    # modify global variable value
+    global global_var
+    global_var = 30
+
+# print global variable value
+print(global_var)
+
+# call the function and modify the global variable
+my_function()
+
+# print the modified value of the global variable
+print(global_var)
+
+# python if...else statement
+number = 10
+if number > 0:
+    print('Number is positive')
+print('The if statement is easy')
+print()
+number = -10
+if number > 0:
+    print('Number is positive')
+print('The if statement is easy')
+
+# if else statement
+number = 10
+if number > 0:
+    print('Number is positive')
+else:
+    print('number is negative')
+print('The if statement is easy')
+print()
+number = -10
+if number > 0:
+    print('Number is positive')
+else:
+    print('Number is negative')
+print('The if statement is easy')
+
+# making a choice more than two alternative
+# python if...elif..else statement
+number = 0
+if number > 0:
+    print('Positive number')
+elif number == 0:
+    print('zero')
+else:
+    print('Negative number')
+print('The statement is always executed')
+print()
+number = 1
+if number > 0:
+    print('Positive number')
+elif number == 0:
+    print('zero')
+else:
+    print('Negative number')
+print('The statement is always executed')
+print()
+number = -1
+if number > 0:
+    print('Positive number')
+elif number == 0:
+    print('zero')
+else:
+    print('Negative number')
+print('The statement is always executed')
+print()
+# python nested if statements
+"""we can use if statement inside an if statement."""
+number = 5
+if (number >= 0):
+    if number == 0:
+        print('Number is 0')
+    else:
+        print('Number is positive')
+else:
+    print('number is negative')
+
+# python for loop
+"""lops are used to repeat a block of code:
+two type of loop;
+1 - for loop
+2 - while loop"""
+
+# loop for python list
+languages = ['java', 'python', 'javascript']
+for language in languages:
+    print(language)
+
+languages = ['java', 'python', 'javascript']
+for language in languages:
+    print(languages)
+print()
+# python for loop with python range
+values = range(5)
+for num in values:
+    print(num)
+    print()
+values = range(5)
+for num in values:
+    print(values)
+print()
+# python for loop with else
+digits = [0, 1, 5]
+for digit in digits:
+    print(digit)
+print()
+
+digits = [0, 1, 5]
+for digit in digits:
+    print(digit)
+    print(digits)
+
+digits = [0, 1, 5]
+for digit in digits:
+    print(digit)
+else:
+    print('No item left')
+
+python while loop
+"""while loop is used to run a block code until a certain condition is met"""
+i = 1
+n = 5
+while i <= n:
+    print(i)
+    i = i + 1
+# program to calculate the sum of numbers until the user enters zero
+total = 0
+number = int(input('Enter a number: '))
+while number != 0:
+    total += number
+    number = int(input('Enter a number: '))
+print('total =', total)
+
+# same code as the one above
+sum = 0
+while True:
+    user_input = input("Enter a number (type 'calculate to sum up): ")
+    if user_input == 'calculate':
+        break
+    try:
+        number = int(user_input)
+        sum += number
+    except ValueError:
+        print('Invalid input, try again.')
+print('sum of numbers:', sum)
+
+# infinite while loop in python
+"""if the condition of a loop alsways True, the loop runs for infinite times
+(until the memory is full)."""
+
+age = 24
+while age > 18:
+    # print('You can vote') # you can stop the code from running by using break
+
+# python while loop with else
+counter = 0
+while counter < 3:
+    print('inside loop')
+    counter = counter + 1
+else:
+    print('inside else')
+print()
+counter = 0
+while counter < 3:
+    if counter == 1:
+        break
+    print('inside loop')
+    counter = counter + 1
+else:
+    print('inside else')
+
+# python break statement with for loop
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+
+# python break statement with while loop
+i = 1
+while i <= 10:
+    print('6 * ', (i), '=', 6 * i)
+    if i >= 5:
+        break
+    i = i + 1
+
+# python continue statement
+"""the continue statement is used to skip the current iteration of the loop
+and the control flow of the program goes to the next iteration"""
+# python continue statement with for loop
+for i in range(5):
+    if i == 3:
+        continue
+    print(i)
+print()
+# python continue statement with while loop
+number = 0
+while number < 10:
+    number += 1
+    if (number % 2) == 0:
+        continue
+    print(number)
+# in the code above when the number is even, the continue statement skips the current iteration
+
+# python pass statement
+"""pass statement is a null statement which can be used as a placeholder for future code"""
+# using pass with conditional statement
+n = 10
+if n > 10:
+    pass
+print('hello')
+
+# if we didn't use pass in the above code
+# n = 10
+# if n > 10:
+# print('hello') we get an error message
+"""the difference between a comment and a pass statement in python is that while the interpreter ignores a
+comment entirely, pass is not ignored"""
+
+# python functions
+"""function is a block of code that performs a specific task"""
+# types of function
+"""1 - standard library functions : built-in functions in python that are available to use.
+2- user-defined functions: we can create our own functions based on our requirement"""
+def greet():
+    print('hello')
+"""above we have created a function name greet() but the function doesn't have any arguments
+and doesn't return any value."""
+
+# calling a function
+"""to use a function we need to call it"""
+def greet():
+    print('hello')
+greet()
+print('outside function')
+
+# function argument: a function can have argument
+"""argument: it is a value accepted by a function"""
+def add_number(num1, num2):
+    sum = num1 + num2
+    print('sum:', sum)
+add_number(10, 10)
+
+# the return statement in python
+"""a python function may or may not return a value. if we want our function to return some values to a function
+call, we use the return statement. return statement also denotes that the function has ended. any code after return
+is not executed"""
+def find_square(num):
+    result =  num * num
+    print(result)
+    return result
+find_square(5)
+#  2
+def find_square(num):
+    result =  num * num
+    return result
+square = find_square(5)
+print(square)
+
+# python library function: built-in use directly in our program
+import math
+square_root = math.sqrt(4)
+print('square root of 4 =', square_root)
+power = pow(2, 3)
+print('2 to the power 3 is:', power)
+print()
+# benefits of using a function
+# 1- code reusable
+def get_square(num):
+    sum = num * num
+    print('square of i =', sum)
+    return sum
+for i in  [1, 2, 3]:
+    get_square(i)
+print()
+# or
+def get_square(num):
+    return num * num
+for i in [1, 2, 3]:
+    result = get_square(i)
+    print('square of i =', result)
+# 2 - code readability
+
+python function argument
