@@ -3976,5 +3976,276 @@ for i in [1, 2, 3]:
     result = get_square(i)
     print('square of i =', result)
 # 2 - code readability
+#
+# python function argument
+"""in computer programming, an argument is a value that is accepted by a function"""
+def add_number(a, b):
+    sum = a + b
+    print('sum:', sum)
+    return sum
+add_number(1, 2)
+print()
 
-python function argument
+def add_number(a, b):
+    sum = a + b
+    print('sum:', sum)
+add_number(1, 2)
+
+def add_number(num):
+    sum = num + num
+    print('sum:', sum)
+add_number(int(2.5))
+
+def add_number(num):
+    sum = num + num
+    print('sum:', sum)
+    return sum
+add_number(int(2.5))
+print()
+# argument with default values by the use of (=) operator
+def add_number(a = 7, b = 9):
+    sum = a + b
+    print('sum:', sum)
+add_number(2, 3)
+add_number(a=2)
+add_number()
+print()
+# python keyword argument
+"""here, argument is assigned based on the name of the arguments"""
+def display_info(first_name, last_name):
+    print(first_name, last_name)
+display_info(first_name='Francis', last_name="Royce")
+
+def display_info(first_name, last_name):
+    names = (first_name, last_name)
+    print(first_name, last_name)
+    return names
+display_info(first_name='Francis', last_name="Royce")
+
+def display_info(first_name, last_name):
+    print('First name:', first_name)
+    print("Last name:", last_name)
+display_info(first_name='Francis', last_name="Royce")
+print()
+# python function with arbitrary arguments (*)
+"""sometimes, we do not know in advance the number of arguments that will be passed into a function.
+to handle this situation, we can use arbitrary arguments in python before parameter name"""
+def find_sum(*numbers):
+    result = 0
+    for num in numbers:
+        result = result + num
+        print('sum:', result)
+find_sum(1, 2, 3)
+find_sum(4, 9)
+
+# python recursion
+"""A function that calls itself; Recursion is the process of defining something in terms of itself"""
+def factorial(x):
+    if x == 1:
+        return 1
+    else:
+        return (x * factorial(x-1))
+num = 3
+print('The factorial of', num, 'is', factorial(num))
+
+# python lambda/anonymous function
+"""in python lambda is a special type of function without function name"""
+# lambda: print('hello world')
+
+# python lambda function declaration
+"""we use lambda instead of def to create lambda function"""
+greet = lambda : print('hello world')
+greet()
+
+# python lambda function with an argument
+
+greet_user = lambda name: print('Hey dear', name)
+greet_user('Francis Royce')
+
+# python variable scope: local, nonlocal, and global variables
+
+# python local variable
+"""when we declare variables inside a function, these variables will have a local scope(within the function)
+.we cannot access them outside the function"""
+def greet():
+    # local variable
+    message = 'hello'
+    print('local', message)
+greet()
+# print(message) error cos is outside the function
+print()
+# python global variable
+"""A variable declared outside of the function or in global scope is known as a global variable
+this means a global variable can be accessed inside or outside of the function"""
+message = 'hello'
+def greet():
+    # declare local variable
+    print('local', message)
+greet()
+# declare global variable
+print('global', message)
+print()
+# python Nonlocal variables (nonlocal)
+"""used in nested functions whose local scope is not defined. this means that the variable can be neither in
+the local nor the global scope. we use nonlocal keyword to create the variable"""
+
+def outer():
+    message = 'local'
+    def inner():
+        nonlocal message
+        message = 'nonlocal'
+        print('inner:', message)
+    inner()
+    print('outer:', message)
+outer()
+print()
+
+# python global keyword
+"""the global keyword allows us to modify the variable outside of the current scope.
+it is used to create global variable and make changes to the variable in a local context"""
+
+# access and modify python global variable
+c = 1
+def add():
+    print(c)
+add()
+
+c =1
+def add():
+    c = c + 2
+    #  we try to modify the global variable from inside a function gives error
+    print(c)
+# add()
+
+# changing a global variable from inside a function using global keyword
+c = 1
+def add():
+    global c
+    c = c + 2
+    print(c)
+add()
+
+# global i9n nested function: we can also use the global keyword in nested function
+def outer_function():
+    num = 20
+    def inner_function():
+        global num
+        num = 25
+    print('before calling inner function:', num)
+    inner_function()
+    print('after calling inner function:', num)
+outer_function()
+print('outside both function:', num)
+
+# python modules
+"""module: it is a file that that contains code to perform a specific task.
+A  module may contain variables, functions, classes etc.
+as our program grows bigger, it may contain many lines of code. instead of putting everything
+in a single file, we can use module to separate files as per their functionality"""
+# here, example module is a self created module saved at the directory
+import example
+print(example.add(9, 10))
+
+# import standard library modules
+"""the python standard library contains over 200 modules. we can import a module according to our needs"""
+import math
+print('the value of pi is:', math.pi)
+
+# python import with renaming
+import math as  m
+print(m.pi)
+
+# python from...import statement
+from math import pi
+print(pi)
+
+# import all names (module)
+"""we can import all the names(definition) from a module using the following construct:  we use (*)"""
+from math import *
+print(pi)
+print(sqrt(7))
+
+# the dir() built-in function
+"""we can use the dir() function gto list all the function names in a module"""
+import example
+print(dir(example))
+print(example.__name__)
+print(example.__loader__)
+print(example.__file__)
+print(example.__doc__)
+print(example.__spec__)
+print(example.__cached__)
+print(example.__builtins__)
+print(example.__package__)
+
+# # python package
+"""a package is a container that contains various functions to perform specific tasks
+example, the math package includes the sqrt() function to perform the square root of a  number.
+while working on a big projects, we have to deal with a large amount of code, and writing everything
+togetrher in the same file will make our code look messy. instead, we can separate our code
+into multiple files by keeping the related code together in packages
+
+Note, a directory must contain a file name (__init__.py)in order for python to consider it as a package.
+this file can be left empty but we generally place the initialization code for that package in this file"""
+
+# importing module from a package
+"""we can import modules from a package using dot(.) operator"""
+
+# python file I/Opython file operation
+# opening files, we use open()
+file1 = open('text.txt', 'r')
+print(file1.read())
+print()
+
+file1 = open('text.txt', 'r')
+read_content = file1.read()
+print(read_content)
+file1.close()
+print()
+
+# closing a file, it will free up the file
+file2 = open('python.txt')
+read_content = file2.read()
+print(read_content)
+file2.close()
+
+# exception handling in files
+"""if an exception occurs when we are performing some operation with the file, the code exits
+without closing the files. A safer way is to use a try...finally block"""
+try:
+    file1 = open('python.txt', 'r')
+    read_content = file1.read()
+    print(read_content)
+finally:
+    file1.close()
+print()
+# use of with...open syntax
+"""we can use the with...open syntax to automatically close the file, since we don't have to
+about closing the file, make a habit of using with...open syntax"""
+with open('python.txt', 'r') as file1:
+    read_content = file1.read()
+    print(file1)
+    print(read_content)
+# writing to files in python
+# two things to remember when writing to files
+"""1- if we try to open a file that doesn't exist, a new file is created
+2- if a file already exists, its content is erased, and new content is added to the file"""
+
+with open('test2.txt', 'w') as  file3:
+    file3.write('python is fun')
+    file3.write('python for beginners')
+    # read_content = file3.read()
+    # print(read_content) # error not readable cos of 'w'
+# to make it readaable
+with open('test2.txt', 'r') as  file3:
+    read_content = file3.read()
+    print(read_content)
+
+with open('test2.txt', 'r') as file3:
+    read_content = file3.read()
+    print(read_content)
+    file3.readline()
+
+# python directory and files management
+
+
