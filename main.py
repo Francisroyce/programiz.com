@@ -4226,18 +4226,19 @@ with open('python.txt', 'r') as file1:
     read_content = file1.read()
     print(file1)
     print(read_content)
+
 # writing to files in python
 # two things to remember when writing to files
 """1- if we try to open a file that doesn't exist, a new file is created
 2- if a file already exists, its content is erased, and new content is added to the file"""
 
-with open('test2.txt', 'w') as  file3:
-    file3.write('python is fun')
+with open('test2.txt', 'w') as file3:
+    file3.write('python is fun\n')
     file3.write('python for beginners')
     # read_content = file3.read()
     # print(read_content) # error not readable cos of 'w'
-# to make it readaable
-with open('test2.txt', 'r') as  file3:
+# to make it readeable
+with open('test2.txt', 'r') as file3:
     read_content = file3.read()
     print(read_content)
 
@@ -4247,5 +4248,228 @@ with open('test2.txt', 'r') as file3:
     file3.readline()
 
 # python directory and files management
+"""a directory is a collection of files and subdirectories.
+A directory inside a directory is known as a subdirectory
+python has the os module useful methods to work with directories (and files as well)"""
+# get current directory in python using os module and getcwd()
+"""this method returns the current working directory in the form of a string"""
+import os
+print(os.getcwd())
 
+# changing the directory in python
+"""we can change the working directory by using the chdir() method.
+the new path that we want to change into must be supplied as a string to this method.
+we can use both the forward-/ and backword-\ to separate the path elements"""
 
+# import os
+# os.chdir('')
+# print(os.getcwd())
+# list directories and files in python
+import os
+print(os.getcwd())
+print(os.listdir())
+
+# making a new directory in python mkdir()
+import os
+new_directory = 'example_directory'
+try:
+    os.mkdir(new_directory)
+except OSError:
+    print('creation of the directory %s',  new_directory)
+else:
+    print('successfully created the directory %s ', new_directory)
+
+# Renaming a Directory or a File
+"""The rename() method can rename a directory or a file.
+
+For renaming any directory or file, rename() takes in two basic arguments:
+
+the old name as the first argument
+the new name as the second argument."""
+
+import os
+print(os.listdir())
+os.rename('FrancisRoyce', 'masterfrancis')
+print(os.listdir())
+
+# removing directory or file in python
+"""we can use the remove() method or rmdir() method to remove a file or directory"""
+import os
+# print(os.remove('python.txt'))
+# print(os.remove('text.txt'))
+
+# we can use rmdir() to remove an empty directory
+import os
+# print(os.rmdir('example_directory'))
+
+# in order to remove non-empty directory, we can use rmtreet() method inside the shutil module
+import shutil
+# shutil.rmtree('masterfrancis')
+
+# python Exceptions
+"""an exception is an unexpected event that occurs during program execution"""
+divide_by_zero = 7/0
+print(divide_by_zero)
+
+# python built-in exceptions
+print(dir(locals()['__builtins__']))
+
+# python exception handling
+# try..except..finally
+
+# python try..except block
+"""this is used to handle exception.
+note that except block can not be used without try block"""
+
+try:
+    numerator = 110
+    denominator = 0
+    result = numerator/denominator
+    print(result)
+except:
+    print('Error: Denominator cannot be 0')
+
+# catching specific exceptions in python
+try:
+    even_numbers = [2, 4, 6, 8]
+    print(even_numbers[5])
+except ZeroDivisionError:
+    print("denominator cannot be 0.")
+except IndexError:
+    print('Index out of bound')
+
+# python try with else clause
+"""in some situations, we might want to run a certain block of code if the code of block inside 'try' runs
+without any errors. for these case you can use the optional else keyword with 'try' statement"""
+try:
+    num = int(input('Enter a number: '))
+    assert num % 2 == 0
+except:
+    print('Not an even number')
+else:
+    reciprocal = 1/num
+    print(reciprocal)
+
+# python try...finally
+"""the finally block is always excuted no matter whether there is an exception or not
+and it is optional, there can be only one final block"""
+try:
+    numerator = 10
+    denominator = 0
+    result = numerator/denominator
+    print(result)
+except:
+    print('Error: Denominator cannot be 0.')
+finally:
+    print('This is finally block')
+
+# python custom exception
+
+# defining custom exception
+"""we can define custom exceptions by creating a new class that is derived from the built-in
+exception class"""
+
+# python user-Defined exception
+class InvalidAgeException(Exception):
+    'raise when the input value is less than 18'
+    pass
+number = 18
+try:
+    input_num = int(input('Enter a number: '))
+    if input_num < number:
+        raise InvalidAgeException
+    else:
+        print('Eligible to vote')
+except InvalidAgeException:
+    print('Exception occured: Invalid Age')
+
+customizing Exception classes
+class SalaryNotInRangeError(Exception):
+    def __init__(self, salary, message = 'salary is not (5000, 15000) range'):
+        self.salary = salary
+        self.message = message
+        super().__init__(self.message)
+salary = int(input('Enter salary amount: '))
+if not 5000 < salary < 15000:
+    raise SalaryNotInRangeError(salary)
+
+# python object oriented programmming
+"""An object is any entity that has attributes and behaviour.
+example: parrot
+attribute: name, ager, color etc
+behaviour: dancing, singing, etc"""
+
+# python class and object
+class parrot:
+    name = ''
+    age = 0
+parrot1 = parrot()
+parrot1.name = 'Royce'
+parrot1.age = 10
+
+parrot2 = parrot()
+parrot2.name = 'Francis'
+parrot2.age = 20
+print(f'{parrot1.name} is {parrot1.age} years old ')
+print(f'{parrot2.name} is {parrot2.age} years old ')
+print()
+# python Inheritance
+"""inheritance is a way of creating a new class for using details of an existing class without modifying it.
+the newly formed class is a derived class (or child class). similarly, the existing class is a base class or
+parent class"""
+
+# use of inheritance in python
+class Animal:
+    def eat(self):
+        print('I can eat!')
+    def sleep(self):
+        print('I can sleep')
+ # derived class
+class dog(Animal):
+    def bark(self):
+        print('I can bark! woof woof!!')
+dog1 = dog()
+dog1.eat()
+dog1.sleep()
+dog1.bark()
+
+# python Encapsulation
+"""it is one of the keys features of object-oriented  programming. it refers to the bundling of attributes and
+methods inside a single, it helps in achieving data hiding"""
+# in python, we denote private attributes using underscore as the prefix i.e single(_) or double (__)
+print()
+class Computer:
+    def __init__(self):
+        self.__maxprice = 900
+    def sell(self):
+        print('selling price: {}'.format(self.__maxprice))
+    def setMaxPrice(self, price):
+        self.__maxprice = price
+c = Computer()
+c.sell()
+c.__maxprice = 1000
+c.sell()
+c.setMaxPrice(1000)
+c.sell()
+print()
+# polymorphism
+"""polymorphism is another important concept of OOP. it simply means more than one.
+that is, the same entity(method or operator or object) can perform different operations
+in different scenarios"""
+class Polygon:
+    def render(self):
+        print('rendering polygon.....')
+class Square(Polygon):
+    def render(self):
+        print('rendering square....')
+class Circle(Polygon):
+    def render(self):
+        print('rendering circle....')
+s1 = Square()
+s1.render()
+c1 = Circle()
+c1.render()
+p1 = Polygon()
+p1.render()
+
+# python objects and classes
