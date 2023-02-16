@@ -4473,3 +4473,165 @@ p1 = Polygon()
 p1.render()
 
 # python objects and classes
+"""a class is considered as a blueprint of objects. we can think of the class as a sketch (prototype)
+of a house. it contains all the details about the floors, doors, windows etc.Based on these
+descriptions we build the house. house is the object, since many houses can be made from the description,
+we can create objects from a class"""
+class bike:
+    name = ''
+    gear = 0
+bike1 = bike()
+"""we created a class named: bike
+attributes: name, and gear
+object: bike1"""
+
+# access class attributes using objects.
+"""we use dot(.) notation to access the attribute of the class"""
+bike1.name = 'Honda'
+bike1.gear
+pass
+
+# python class and objectike
+class Bike:
+    name = ''
+    gear = 0
+Bike1 = Bike()
+Bike1.name = 'Honda'
+Bike1.gear = 11
+print(f'name: {Bike1.name}, Gears: {Bike1.gear}')
+print()
+# create multiple objects of python class
+class Employee:
+    employee_id = 0
+employee1 = Employee()
+employee2 = Employee()
+employee1.employee_id = 1001
+employee2.employee_id = 1002
+print(f'Employee ID: {employee1.employee_id}')
+print(f'Employee ID: {employee2.employee_id}')
+
+# python methods
+"""we can also define a function inside a python class.
+A python function defined inside a class is called a method"""
+print()
+class Room:
+    length = 0.0
+    breadth = 0.0
+    def Calculate_area(self):
+        print('Area of Room = ', self.length * self.breadth)
+study_room = Room()
+study_room.length = 43.9
+study_room.breadth = 30.9
+study_room.Calculate_area()
+
+# python Inheritance
+"""inheritance allows us to create a new class from an existing class"""
+# # python inheritance syntax
+# class super_class:
+# class sub_class (super_class):
+print()
+# python inheritance
+class Animal:
+    name = ''
+    def eat(self):
+        print('i can eat')
+class dog(Animal):
+    def display(self):
+        print('my name is', self.name)
+labrator = dog()
+labrator.name = 'Bright'
+labrator.eat()
+labrator.display()
+
+# inheritance in python
+class Polygon:
+    def __init__(self, no_of_sides):
+        self.n = no_of_sides
+        self.sides = [0 for i in range(no_of_sides)]
+    def inputSides(self):
+        self.sides = [float(input('Enter side ' + str(i + 1) + ' : ')) for i in range(self.n)]
+    def dispSides(self):
+        for i in range(self.n):
+            print('side', i+1, 'is', self.sides[i])
+class Triangle(Polygon):
+    def __init__(self):
+        Polygon.__init__(self, 3)
+    def findArea(self):
+        a, b, c = self.sides
+        s = (a + b + c)/2
+        area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
+        print('The area of the triangle is %0.2f' %area)
+t = Triangle()
+t.inputSides()
+t.dispSides()
+t.findArea()
+above, the object of the subclass can access the method of the superclass
+
+# method overriding in python inheritance
+"""in this case, the method in the overrides the method in the superclass. The concept
+is known as overridding """
+class Animal:
+    name = ''
+    def eat(self):
+        print('i can eat')
+class Dog(Animal):
+    def eat(self):
+        print('i like to eat bones')
+labrador = Dog()
+labrador.eat()
+print()
+# The super() method in python inheritance to access the superclass
+class Animal:
+    name = ''
+    def eat(self):
+        print('i can eat')
+class Dog(Animal):
+    def eat(self):
+        super().eat()
+        print('i like to eat bones')
+labrador = Dog()
+labrador.eat()
+print()
+# python multiple inheritance
+class Mammal:
+    def mammal_info(self):
+        print('mammals can give birth directly')
+class WingedAnimal:
+    def winged_animal_info(self):
+        print('Winged animals can flap')
+class Bat(Mammal, WingedAnimal):
+    pass
+b1 = Bat()
+b1.mammal_info()
+b1.winged_animal_info()
+print()
+# python multiple inheritance
+class Superclass:
+    def super_method(self):
+        print('super class method called')
+class Derivedclass1(Superclass):
+    def derived_method(self):
+        print('derived class method called')
+class Derivedclass2(Derivedclass1):
+    def derived2_method(self):
+        print('derived class 2 method called')
+d2 = Derivedclass2()
+d2.super_method()
+d2.derived_method()
+d2.derived2_method()
+
+# python Resolution order(MRO)
+"""if two superclass have the same method name and the derived class calls that method,
+python uses the MRO to search for the right method to call"""
+class SuperClass1:
+    def info(self):
+        print('super class 1 method called')
+class SuperClass2:
+    def info(self):
+        print('super class 2 method called')
+class Derived(SuperClass1, SuperClass2):
+    pass
+d1 = Derived()
+d1.info()
+
+# python operator overloadding
