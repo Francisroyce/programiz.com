@@ -4634,4 +4634,204 @@ class Derived(SuperClass1, SuperClass2):
 d1 = Derived()
 d1.info()
 
-# python operator overloadding
+# python operator overloading
+""""we can change the way operators work for user-defined types.This feature in python allows
+the same operator to have different meaning according to the context, we use special functions for the operation
+(double underscore prefix and suffix = special function)"""
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return ('{0}, {1}'.format(self.x, self.y))
+    def __add__(self, other):
+        x = self.x + other.x
+        y = self.y + other.y
+        return Point(x, y)
+p1 = Point(1, 2)
+p2 = Point(2, 3)
+print(p1 + p2)
+print()
+# overloading comparison operators
+"""python does not limit operator overloading to arithmetic operators only"""
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        # overload < operator
+    def __lt__(self, other):
+        return self.age < other.age
+p1 = Person('Francis', 20)
+p2 = Person('Royce', 30)
+print(p1 < p2)
+print(p2 < p1)
+print()
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        # overload < operator
+    def __ge__(self, other):
+        return self.age >= other.age
+p1 = Person('Francis', 20)
+p2 = Person('Royce', 30)
+print(p1 <= p2)
+print(p2 >= p1)
+
+# python iterator
+"""iterator methods that iterate collection like list, tuples etc. using an iterator method, we can loop through
+an object and return its elements. Technically, a python iterator object must implement two special method,
+__iter__() and __next__, collectively called the iterator protocol"""
+
+# iterating through an iterator
+myList = [1, 2, 3, 4]
+iterator = iter(myList)
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))
+print()
+# using for loop
+
+myList = [1, 2, 3, 4]
+for element in myList:
+    print(element)
+print()
+# working of for loop for iterator
+myList = [1, 2, 3, 4]
+iterator = iter(myList)
+for element in iterator:
+    print(element)
+print()
+# Building custom iterator using special function
+class PowTwo:
+    def __init__(self, max=0):
+        self.max = max
+    def __iter__(self):
+        self.n = 0
+        return self
+    def __next__(self):
+        if self.n <= self.max:
+            result = 2 ** self.n
+            self.n += 1
+            return result
+        else:
+            raise StopIteration
+numbers = PowTwo(3)
+i = iter(numbers)
+print(next(i))
+print(next(i))
+print(next(i))
+print(next(i))
+print()
+
+# we can also use for loop
+for i in PowTwo(3):
+    print(i)
+print()
+# python infinite iterators
+"""infinite iterator is an iterator that never ends, meaning that it will continue to
+produce elements indefinitely, we use the count() function from the itertools module"""
+
+from itertools import count
+infinte_iterator = count(1)
+for i in range(5):
+    print(next(infinte_iterator))
+
+# python Generators
+"""a generator is a function that returns an iterator that produced a sequence of value
+when iterated over. Generators are useful when we want to produce a large sequence of values,
+but we don't want to store all of them in memory at once"""
+
+# create python generator
+"""similar to defining a normal function, we can define a generator function using def
+keyword, but instead of the return statement we use the yield statement"""
+
+# python generator
+def my_generator(n):
+    value = 0
+    while value < n:
+        yield value
+        value += 1
+for value in my_generator(3):
+    print(value)
+
+print()
+# python generator expresssion
+square_generator = (i * i for i in range(5))
+for i in square_generator:
+    print(i)
+print()
+
+# use of python generator
+# 1- easy to implement
+class PowTwo:
+    def __init__(self, max=0):
+        self.max = max
+    def __iter__(self):
+        self.n = 0
+        return self
+    def __next__(self):
+        if self.n <= self.max:
+            result = 2 ** self.n
+            self.n += 1
+            return result
+"""the above program was lengthy and confusing. now, lets do the same using a genrator function"""
+
+def PowTwoGen(max=0):
+    n = 0
+    while n < max:
+        yield 2 ** n
+        n +=1
+for n in PowTwoGen(3):
+    print(n)
+print()
+# even number using generator (infinte stream)
+def even_numbers(n):
+    n = 0
+    while True:
+        yield n
+        n += 2
+        break #remove break to run
+for n in  even_numbers(10):
+    print(n)
+print()
+def fibonacci():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b
+fib = fibonacci()
+for i in  range(10):
+    print(next(fib))
+
+print()
+# pipelining generators
+"""multiple generator can be used to pipeline a series of operations"""
+def fibonacci_numbers(nums):
+    x, y = 0, 1
+    for _ in range(nums):
+        x, y = y, x+y
+        yield x
+def square(nums):
+    for num in nums:
+        yield num**2
+print(sum(square(fibonacci_numbers(10))))
+print()
+def even_squares(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            yield num**2
+def odd_numbers(numbers):
+    for num in numbers:
+        if num % 2 == 0:
+            yield num
+def pipeline(numbers):
+    return list(even_squares(odd_numbers(numbers)))
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+result = pipeline(numbers)
+print(result)
+
+# Python closures
