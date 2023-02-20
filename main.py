@@ -4834,4 +4834,73 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 result = pipeline(numbers)
 print(result)
 
-# Python closures
+Python closures
+""""python closure is a nested function that allows us to access variables of the outer
+function even after the outer function is closed. lets revise nested function in python"""
+# nested function in python
+def greet(name):
+    def display_name():
+        print('Hi', name)
+    display_name()
+greet('Francis Royce')
+
+# python closure
+def greet():
+    # variable defined outside the inner function
+    name = "Francis Royce"
+    # return a nested anonymous function
+    return lambda: "Hi " + name
+# call the outer function
+message = greet()
+# call the inner function
+print(message())
+
+# Print odd Numbers using Golang closure
+def calculate():
+    num = 1
+    def inner_func():
+        nonlocal num
+        num += 2
+        return num
+    return inner_func
+odd = calculate()
+print(odd())
+print(odd())
+print(odd())
+print()
+odd2 = calculate()
+print(odd2())
+print()
+"""however, for larger cases with multiple attributes and methods, a class
+implememntation may be more appropriate"""
+def make_multiplier_of(n):
+    def multiplier(x):
+        return x * n
+    return multiplier
+times3 = make_multiplier_of(3)
+times5 = make_multiplier_of(5)
+print(times3(9))
+print(times5(3))
+print(times3(2))
+print()
+python decorator
+"""remember that everything in python is an object, even functions"""
+# nested function where we can include a function in another function
+def outer(x):
+    def inner(y):
+        return x + y
+    return inner
+add_five = outer(5)
+result = add_five(6)
+print(result)
+print()
+# pass function as an argument
+def add(x, y):
+    return x + y
+def calculate(func, x, y):
+    return func(x, y)
+result = calculate(add, 4, 12)
+print(result)
+
+return a function as a value
+
