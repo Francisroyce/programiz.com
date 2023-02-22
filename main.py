@@ -4901,6 +4901,340 @@ def calculate(func, x, y):
     return func(x, y)
 result = calculate(add, 4, 12)
 print(result)
+print()
+# return a function as a value
+def greeting(name):
+    def hello():
+        return 'Hello, ' + name + '!'
+    return hello
+greet = greeting('Francis Royce')
+print(greet())
+print()
+# python decorator
+"""a python decorator is a function that takes in a function and returns it by
+adding some functionality"""
+def make_pretty(func):
+    def inner():
+        print('i got decorated')
+        func()
+    return inner
+def ordinary():
+    print('i am ordinary')
+ordinary()
+print()
+# now lets call it using decorator function
+def make_pretty(func):
+    def inner():
+        print('i got decorated')
+        func()
+    return inner
+def ordinary():
+    print('i am ordinary')
+decorated_func = make_pretty(ordinary)
+decorated_func()
+print()
+# using @ symbol with decorator
+"""instead of assigning the function call to a variable, python provides a much
+more elegant way to achieve this functionality using the @ symbol"""
+def make_pretty(func):
+    def inner():
+        print('i am decorated')
+        func()
+    return inner
+@make_pretty
+def ordinary():
+    print('i am ordinary')
+ordinary()
+print()
+# decorating functions with parameter
+def smart_divide(func):
+    def inner(a, b):
+        print('i am going to divide', a, 'and', b)
+        if b == 0:
+            print('whoops! cannot divide')
+            return
+        return func(a, b)
+    return inner
+@smart_divide
+def divide(a, b):
+    print(a/b)
+divide(2, 5)
+divide(2, 0)
+divide(10, 2)
 
-return a function as a value
+# chaining decorators in python
+"""to chain decorator in python, we can apply multiple decorators to a
+single function by placing them one after the other with the most inner decorator
+being applied first"""
+def star(func):
+    def inner(*args, **kwargs):
+        print('*' * 15)
+        func(*args, **kwargs)
+        print('*' * 15)
+    return inner
+def percent(func):
+    def inner(*args, **kwargs):
+        print('%' * 15)
+        func(*args, **kwargs)
+        print('%' * 15)
+    return inner
+@star
+@percent
+def printer(msg):
+    print(msg)
+printer('hello')
 
+# python @property decorator
+"""python programming provides us with a built-in @property decorator which makes usage
+of getter and setter much easier in object oriented programming. before going into details
+on what @property decorator is, let us first build an institution on why it would be needed
+in the first place."""
+print()
+# class without getters and setters
+class Celsius:
+    def __init__(self, temperature=0):
+        self.temperature = temperature
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+# create a new object
+human = Celsius()
+# set the temperature
+human.temperature = 37
+# get the temperature attribute
+print(human.temperature)
+print(human.to_fahrenheit())
+
+# using getters and setters
+"""suppose we want to extend the usability of the celsius class defined above.
+we know that the temperature of any object cannot reach below -273.15 degree celsius"""
+class Celsius:
+    def __init__(self, temperature=0):
+        self.set_temperature(temperature)
+    def to_fahrenheit(self):
+        return (self.get_temperature() * 1.8) + 32
+    def get_temperature(self):
+        return self._temperature
+    def set_temperature(self, value):
+        if value < -273.15:
+            raise ValueError('Temperature below -273.15 is not possible.')
+        self._temperature = value
+human = Celsius(37)
+print(human.get_temperature())
+human.set_temperature(-300)
+print(human.to_fahrenheit())
+
+lower value (40)
+class Celsius:
+    def __init__(self, temperature=0):
+        self.set_temperature(temperature)
+    def to_fahrenheit(self):
+        return (self.get_temperature() * 1.8) + 32
+    def get_temperature(self):
+        return self._temperature
+    def set_temperature(self, value):
+        if value < -273.15:
+            raise ValueError('Temperature below -273.15 is not possible.')
+        self._temperature = value
+human = Celsius(37)
+print(human.get_temperature())
+human.set_temperature(40)   # 40
+print(human.to_fahrenheit())
+""""all in all, our update above was not backwards compatible. this is where @property comes to rescue"""
+print()
+# the property class
+class Celsius:
+    def __init__(self, temperature=0):
+        self.temperature = temperature
+    def to_fahrenheit(self):
+        return (self.temperature * 1.8) + 32
+#     getter
+    def get_temperature(self):
+        print('Getting value....')
+        return self._temperature
+#     setter
+    def set_temperature(self, value):
+        print('Setting value..')
+        if value < -273.15:
+            raise ValueError('Temperature below -273.15 is not possible')
+        self._temperature = value
+        temperature = property(get_temperature, set_temperature)
+human = Celsius(37)
+print(human.temperature)
+print(human.to_fahrenheit())
+human.temperature = -300
+
+# the @property decorator
+"""in python, property() is built-in function that creates and returns a property object"""
+# temperature = property()
+# temperature = temperature.getter(get_temperature)
+# temperature = temperature.setter(set_temperature)
+
+ # using @property decorator
+class Celsius:
+     def __init__(self, temperature=0):
+         self.temperature = temperature
+     def to_fahrenheit(self):
+         return (self.temperature * 1.8) + 32
+     @property
+     def temperature(self):
+         print('Getting value...')
+         return self._temperature
+     @temperature.setter
+     def temperature(self, value):
+         print('Setting value...')
+         if value < -273.15:
+             raise ValueError ('Temperature below -273 is not possible')
+         self._temperature = value
+human = Celsius(37)
+print(human.temperature)
+print(human.to_fahrenheit())
+coldest_thing = Celsius(20)
+
+# python RegEx (Regular Expression)
+"""a regular expression (RegEx) is a sequence of characters that defines a search pattern
+a python has a module named re to work with RegEx"""
+# use of re
+import re
+pattern = '^a...s$'
+test_string = 'abyss'
+result = re.match(pattern, test_string)
+
+if result:
+    print('search successful')
+else:
+    print('search unsuccessful')
+
+# specify pattern using RegEx
+"""to specify regular expressions, metacharacters are used. in the above example
+^ and $ are metacharacters"""
+
+# metacharacters
+"""metacharacters are characters that are interpreted in a special way by a RegEx engine
+lists of metacharacters: [] . $ * + ? {} () \|"""
+
+# [] square brackets-it specifies a set of characters you wish to match
+
+# python RegEx(import re)
+# python re.findall()
+"""returns a list of strings containing all matches"""
+import re
+string = 'hello 12 hi 89. Howdy 34'
+pattern = '\d+'
+result = re.findall(pattern, string)
+print(result)
+
+# re.split()
+"""re.split method splits the string where there is a match and returns a list of strings
+where the splits have occured"""
+
+import re
+string = 'Twelve: 12 Eighty nine: 89 Nine: 9.'
+pattern = '\d+'
+result = re.split(pattern, string)
+print(result)
+print()
+# re.sub()
+"""returns a string where matched occurrences are replaced with the content of replace variable"""
+import re
+string = 'abc 12' \
+         ' de 23 \n f45 6'
+pattern = '\s+'
+replace = ''
+new_string = re.sub(pattern, replace, string)
+print(new_string)
+print()
+# re.subn()
+"""it is similar to re.sub() except it returns a tuple of items containing the new
+string and the number of substitution made"""
+import re
+string = 'abc 12' \
+         ' de 23 \n f45 6'
+pattern = '\s+'
+replace = ''
+new_string = re.subn(pattern, replace, string)
+print(new_string)
+
+# re.search() method
+"""takes two arguments: a pattern and a string"""
+
+import re
+string = 'Python is fun'
+match = re.search('\APython', string)
+if match:
+    print('pattern found in the string')
+else:
+    print('pattern not found')
+
+# match.group()
+"""this method returns the part of the string where there is a match"""
+import re
+string = '39801 356, 2102 1111'
+pattern = '(\d{3}) (\d{2})'
+match = re.search(pattern, string)
+print(match)
+if match:
+    print(match.group())
+else:
+    print('pattern not found')
+print()
+# using r prefix before RegEx
+"""when using r or R prefix is used before a regular expression. it means raw string"""
+# raw string using r prefix
+import re
+string = '\n and \r are escape sequance'
+result = re.findall(r'[\n\r]', string)
+print(result)
+
+# python datetime
+"""python has a module named datetime to work with dates and times.
+it provides a variety of classes for representing and manipulating dates and times
+as well as parsing dates and times in a variety of formats"""
+
+# get current date and time
+import datetime
+now = datetime.datetime.now()
+print(now)
+
+# get current date
+import datetime
+current_date = datetime.date.today()
+print(current_date)
+
+# attributes of datetime module
+import datetime
+print(dir(datetime))
+
+# python datetime.date class
+# date object to represent a date
+import datetime
+d = datetime.date(2022, 2, 22)
+print(d)
+
+# import only date class
+from datetime import date
+d = date(2022, 2, 22)
+print(d)
+
+# get current date using today()
+from datetime import date
+todays_date = date.today()
+print(todays_date)
+
+# get date from a timestamp
+from datetime import date
+timestamp = date.fromtimestamp(1326244364)
+print('Date', timestamp)
+
+from datetime import date
+timestamp = date.fromtimestamp(1642062855)
+print('Date', timestamp)
+print()
+# print today's year, month and day
+from datetime import date
+today = date.today()
+print('current year:', today.year)
+print('current month:', today.month)
+print('current day:', today.day)
+
+# more on dates
+# look them up
